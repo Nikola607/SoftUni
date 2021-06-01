@@ -97,3 +97,26 @@ SELECT * FROM `employees`;
 UPDATE `employees`
 SET `salary` = `salary` * 1.12
 WHERE `department_id` IN (1, 2, 4, 11);
+
+USE `geography`;
+
+#21. All Mountain Peaks
+SELECT `peak_name` FROM `peaks`
+ORDER BY `peak_name`;
+
+#22. Biggest Countries by Population
+SELECT `country_name`, `population`, `continent_code` FROM `countries`
+WHERE `continent_code` = "EU"
+ORDER BY `population` DESC, `country_name` LIMIT 30;
+
+#23 .Countries and Currency (Euro / Not Euro)
+SELECT `country_name`, `country_code`,
+IF(`country_code` = 'EUR', 'Euro', 'Not Euro')
+FROM `countries`
+ORDER BY `country_name`;
+
+USE `diablo`;
+
+SELECT `name` FROM `characters`
+ORDER BY `name`;
+
