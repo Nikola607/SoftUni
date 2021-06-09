@@ -109,7 +109,38 @@ VALUES
 (2, 103);
 
 #04. Self-Referencing
+CREATE TABLE `teachers` (
+`teacher_id` INT PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(45),
+`manager_id` INT
+);
 
+ALTER TABLE `teachers` AUTO_INCREMENT = 101;
+INSERT INTO `teachers`(`name`, `manager_id`)
+VALUES
+("John", NULL),
+("Maya", 106),
+("Silvia", 106),
+("Ted", 105),
+("Mark", 101),
+("Greta", 101);
 
+ALTER TABLE `teachers`
+ADD CONSTRAINT fk_teachers_manager_id
+FOREIGN KEY (`manager_id`)
+REFERENCES`teachers`(`teacher_id`);
+
+#05. Online Store Database
+
+#06. University Database
+
+USE `geography`;
+
+#09. Peaks in Rila
+SELECT m.`mountain_range`, p.`peak_name`, p.`elevation` FROM `mountains` AS m
+JOIN `peaks` AS p
+ON p.`mountain_id` = m.`id`
+WHERE m.`mountain_range` = 'Rila'
+ORDER BY p.`elevation` DESC;
 
 
