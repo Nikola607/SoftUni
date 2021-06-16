@@ -26,5 +26,41 @@ ON d.`department_id` = e.`department_id`
 WHERE d.`name` = "Sales"
 ORDER BY e.`employee_id` DESC;
 
+#04. Employee Departments
+SELECT e.`employee_id`, e.`first_name`, e.`salary`, d.`name`
+FROM `employees` AS e
+JOIN `departments` AS d
+ON d.`department_id` = e.`department_id`
+WHERE e.`salary` > 15000
+ORDER BY d.`department_id` DESC LIMIT 5;
 
+#05. Employees Without Project
+SELECT e.`employee_id`, e.`first_name`
+FROM `employees` AS e
+LEFT JOIN `employees_projects` AS p
+ON p.`employee_id` = e.`employee_id`
+WHERE p.`project_id` IS NULL
+ORDER BY  `employee_id` DESC LIMIT 3;
+
+#06. Employees Hired After
+SELECT e.`first_name`, e.`last_name`, e.`hire_date`, d.`name` FROM
+`employees` AS e
+JOIN `departments` AS d
+ON d.`department_id` = e.`department_id`
+WHERE e.`hire_date` > '1999-01-01'
+AND d.`name` = 'Sales' 
+OR d.`name` = 'Finance'
+ORDER BY `hire_date`;
+
+#07. Employees with Project
+SELECT e.`employee_id`, e.`first_name`, p.`name` 
+FROM `employees` AS e
+JOIN `employees_projects` AS ep
+USING(`employee_id`)
+LEFT JOIN `projects` AS p
+USING(`project_id`)
+WHERE p.`start_date` > '2002-08-13'
+AND p.`end_date` IS NULL
+ORDER BY e.`first_name`, p.`name`
+LIMIT 5;
 
