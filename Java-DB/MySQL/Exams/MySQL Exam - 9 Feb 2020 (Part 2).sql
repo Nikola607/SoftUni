@@ -63,4 +63,37 @@ JOIN `players` AS p ON tm.`id` = p.`team_id`
 GROUP BY c.`name`
 ORDER BY `total_count_of_players` DESC, c.`name`;
 
+#10. Find all players that play on stadium
+DELIMITER $$ 
+CREATE FUNCTION udf_stadium_players_count(stadium_name VARCHAR(30))
+RETURNS INT
+DETERMINISTIC
+BEGIN
+	DECLARE e_count INT;
+    SET e_count = (SELECT COUNT(st.`id`) FROM `stadiums` AS st
+    JOIN `teams` AS t
+    ON st.`id` = t.`stadium_id`
+    JOIN `players` AS p
+    ON t.`id` = p.`team_id`
+    WHERE st.`name` = stadium_name);
+RETURN e_count;
+END $$
 
+SELECT udf_stadium_players_count ('Linklinks') as `count`; 
+
+#11. Find good playmaker by teams
+DELIMITER $$
+CREATE PROCEDURE udp_find_playmaker(min_dribble_points INT , team_name VARCHAR(45))
+BEGIN
+	SELECT CONCAT_WS(' ', p.`first_name`, p.`last_name`) AS `full_name`, p.`age`, p.`salary`, sk.`dribbling`, sk.`speed`, tm.`name`
+    FROM `players` AS p
+    JOIN `skills_data` AS sk
+    ON p.`skills_data_id` = sk.`id`
+    JOIN `teams` AS tm
+    ON p.`team_id` = tm.`id`
+    WHERE tm.`name` = team_name AND sk.`dribbling` > min_dribble_points
+    ORDER BY sk.`speed` DESC
+	LIMIT 1;
+END $$
+
+CALL udp_find_playmaker (20, 'Skyble');
