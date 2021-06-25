@@ -5,6 +5,16 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class Exercise_Database_Access_With_JDBC {
+    private static Connection connection;
+
+    static {
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/minions_db", getProperties());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
         Scanner scan = new Scanner(System.in);
 
@@ -19,9 +29,6 @@ public class Exercise_Database_Access_With_JDBC {
     }
 
     private static void ex_1() throws SQLException {
-        Connection connection =
-                DriverManager.getConnection("jdbc:mysql://localhost:3306/minions_db", getProperties());
-
         PreparedStatement stmt =
                 connection.prepareStatement("SELECT v.`name`, COUNT(DISTINCT (mv.`minion_id`)) AS `minions_count` FROM `villains` AS v\n" +
                         "JOIN `minions_villains` AS mv ON v.`id` = mv.`villain_id`\n" +
@@ -36,9 +43,6 @@ public class Exercise_Database_Access_With_JDBC {
     }
 
     private static void ex_2(Scanner scan) throws SQLException {
-        Connection connection =
-                DriverManager.getConnection("jdbc:mysql://localhost:3306/minions_db", getProperties());
-
         PreparedStatement stmt =
                 connection.prepareStatement("SELECT v.`id`, v.`name` AS `villain_name`, m.`name`, m.`age` FROM `villains` AS v\n" +
                         "JOIN `minions_villains` AS mv ON v.`id` = mv.`villain_id`\n" +
@@ -69,10 +73,7 @@ public class Exercise_Database_Access_With_JDBC {
     }
 
     private static void ex_3(Scanner scan) throws SQLException {
-        Connection connection =
-                DriverManager.getConnection("jdbc:mysql://localhost:3306/minions_db", getProperties());
-
-        
+        PreparedStatement stmt = connection.prepareStatement("");
     }
 
     private static Properties getProperties() {
