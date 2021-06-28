@@ -16,15 +16,17 @@ public class Exercise_Database_Access_With_JDBC {
     }
 
     public static void main(String[] args) throws SQLException {
+        System.out.println("Exercise: ");
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Exercise: ");
         int exNum = Integer.parseInt(scan.nextLine());
 
         switch (exNum) {
             case 1 -> ex_1();
             case 2 -> ex_2(scan);
             case 3 -> ex_3(scan);
+            case 4 -> ex_4(scan);
+            case 5 -> ex_5(scan);
         }
     }
 
@@ -158,6 +160,55 @@ public class Exercise_Database_Access_With_JDBC {
         addMinionToVillain.setInt(2, villainId);
         addMinionToVillain.execute();
         System.out.printf("Successfully added %s to be minion of %s.", minionName, villainName);
+    }
+
+    private static void ex_4(Scanner scan) throws SQLException {
+
+    }
+
+    private static void ex_5(Scanner scan) throws SQLException {
+        int villainId = Integer.parseInt(scan.nextLine());
+
+        String villainName = getEntityNameById("villains", villainId);
+
+        if(villainName != null) {
+            int affectedRolls = deleteMinionsByVillain(villainId);
+            deleteEntityById("villains", villainId);
+            System.out.printf("%s was deleted\n" +
+                    "%d minions released\n", villainName, affectedRolls);
+        }else{
+            System.out.println("No such villain was found");
+        }
+    }
+
+    private static String getEntityNameById(String entityName, int entityId) throws SQLException {
+        String query = String.format("SELECT `name` FROM %s WHERE `id` = ?;", entityName);
+        PreparedStatement stmt = connection.prepareStatement(query);
+
+        stmt.setInt(1, entityId);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if(rs.next()){
+            return rs.getString("name");
+        }
+            return null;
+    }
+
+    private static void deleteEntityById(String entityName, int villainId)throws SQLException {
+        String query = String.format("DELETE FROM %s WHERE `id` = ?;", entityName);
+        PreparedStatement stmt = connection.prepareStatement(query);
+
+        stmt.setInt(1, villainId);
+
+        stmt.executeUpdate();
+    }
+
+    private static int deleteMinionsByVillain(int villainId) throws SQLException {
+        PreparedStatement stmt = connection.prepareStatement("DELETE FROM `minions_villains` WHERE `villain_id` = ?;");
+
+        stmt.setInt(1, villainId);
+        return stmt.executeUpdate();
     }
 
     private static Properties getProperties() {
