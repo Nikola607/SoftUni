@@ -163,10 +163,30 @@ public class Exercise_Database_Access_With_JDBC {
     }
 
     private static void ex_4(Scanner scan) throws SQLException {
+        String countryName = scan.nextLine();
 
+        PreparedStatement updateTowns = connection.prepareStatement("UPDATE `towns` SET `name`= UPPER(`name`) WHERE `country` = ?;");
+        updateTowns.setString(1, countryName);
+
+        int affectedRows = updateTowns.executeUpdate();
+
+        if(affectedRows != 0){
+            System.out.printf("%d towns were affected.\n", affectedRows);
+        }else{
+            System.out.println("No towns were affected.");
+        }
+
+        PreparedStatement getTowns = connection.prepareStatement("SELECT `name` FROM `towns` WHERE`country` = ?;");
+        getTowns.setString(1, countryName);
+
+        ResultSet rs = getTowns.executeQuery();
+        while(rs.next()){
+            System.out.print(rs.getString("name") + " ");
+        }
     }
 
     private static void ex_5(Scanner scan) throws SQLException {
+        System.out.println("Enter villain Id: ");
         int villainId = Integer.parseInt(scan.nextLine());
 
         String villainName = getEntityNameById("villains", villainId);
