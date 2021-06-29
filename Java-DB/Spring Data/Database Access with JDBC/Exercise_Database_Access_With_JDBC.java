@@ -21,18 +21,18 @@ public class Exercise_Database_Access_With_JDBC {
         int exNum = Integer.parseInt(scan.nextLine());
 
         switch (exNum) {
-            case 1 -> ex_1();
-            case 2 -> ex_2(scan);
+            case 2 -> ex_2();
             case 3 -> ex_3(scan);
             case 4 -> ex_4(scan);
             case 5 -> ex_5(scan);
-            case 6 -> ex_6();
-            case 7 -> ex_7(scan);
+            case 6 -> ex_6(scan);
+            case 7 -> ex_7();
             case 8 -> ex_8(scan);
+            case 9 -> ex_9(scan);
         }
     }
 
-    private static void ex_1() throws SQLException {
+    private static void ex_2() throws SQLException {
         PreparedStatement stmt =
                 connection.prepareStatement("SELECT v.`name`, COUNT(DISTINCT (mv.`minion_id`)) AS `minions_count` FROM `villains` AS v\n" +
                         "JOIN `minions_villains` AS mv ON v.`id` = mv.`villain_id`\n" +
@@ -46,7 +46,7 @@ public class Exercise_Database_Access_With_JDBC {
         System.out.println(rs.getString("name") + " " + rs.getInt("minions_count"));
     }
 
-    private static void ex_2(Scanner scan) throws SQLException {
+    private static void ex_3(Scanner scan) throws SQLException {
         PreparedStatement stmt =
                 connection.prepareStatement("SELECT v.`id`, v.`name` AS `villain_name`, m.`name`, m.`age` FROM `villains` AS v\n" +
                         "JOIN `minions_villains` AS mv ON v.`id` = mv.`villain_id`\n" +
@@ -76,7 +76,7 @@ public class Exercise_Database_Access_With_JDBC {
         }
     }
 
-    private static void ex_3(Scanner scan) throws SQLException {
+    private static void ex_4(Scanner scan) throws SQLException {
         System.out.println("Enter data: ");
         String[] minionData = scan.nextLine().split("\\s+");
         String[] villain = scan.nextLine().split("\\s+");
@@ -165,7 +165,7 @@ public class Exercise_Database_Access_With_JDBC {
         System.out.printf("Successfully added %s to be minion of %s.", minionName, villainName);
     }
 
-    private static void ex_4(Scanner scan) throws SQLException {
+    private static void ex_5(Scanner scan) throws SQLException {
         System.out.println("Enter country name: ");
         String countryName = scan.nextLine();
 
@@ -189,7 +189,7 @@ public class Exercise_Database_Access_With_JDBC {
         }
     }
 
-    private static void ex_5(Scanner scan) throws SQLException {
+    private static void ex_6(Scanner scan) throws SQLException {
         System.out.println("Enter villain Id: ");
         int villainId = Integer.parseInt(scan.nextLine());
 
@@ -205,7 +205,7 @@ public class Exercise_Database_Access_With_JDBC {
         }
     }
 
-    private static void ex_6() throws SQLException {
+    private static void ex_7() throws SQLException {
         System.out.println("Print all minion names");
 
         PreparedStatement stmt = connection.prepareStatement("SELECT name FROM minions");
@@ -229,7 +229,7 @@ public class Exercise_Database_Access_With_JDBC {
         System.out.println(printMinions);
     }
 
-    private static void ex_7(Scanner scan) throws SQLException {
+    private static void ex_8(Scanner scan) throws SQLException {
         System.out.println("Increase minions age");
         int[] minionIds = Arrays.stream(scan.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
 
@@ -250,8 +250,23 @@ public class Exercise_Database_Access_With_JDBC {
         }
     }
 
-    private static void ex_8(Scanner scan) throws SQLException {
-        
+    private static void ex_9(Scanner scan) throws SQLException {
+        System.out.println("Enter minion id: ");
+        int minionId = Integer.parseInt(scan.nextLine());
+
+        CallableStatement statement1 =
+                connection.prepareCall("CALL usp_get_older(?)");
+
+        statement1.setInt(1, minionId);
+        statement1.execute();
+        PreparedStatement stmt = connection.prepareStatement("SELECT name, age FROM minions WHERE id = ?");
+
+        stmt.setInt(1, minionId);
+
+        ResultSet rs3 = stmt.executeQuery();
+        rs3.next();
+
+        System.out.println(rs3.getString("name") + " " + rs3.getInt("age"));
     }
 
     private static String getEntityNameById(String entityName, int entityId) throws SQLException {
