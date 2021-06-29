@@ -1,8 +1,7 @@
 package DatabaseAccessWithJDBC;
 
 import java.sql.*;
-import java.util.Properties;
-import java.util.Scanner;
+import java.util.*;
 
 public class Exercise_Database_Access_With_JDBC {
     private static Connection connection;
@@ -27,6 +26,9 @@ public class Exercise_Database_Access_With_JDBC {
             case 3 -> ex_3(scan);
             case 4 -> ex_4(scan);
             case 5 -> ex_5(scan);
+            case 6 -> ex_6();
+            case 7 -> ex_7(scan);
+            case 8 -> ex_8(scan);
         }
     }
 
@@ -75,6 +77,7 @@ public class Exercise_Database_Access_With_JDBC {
     }
 
     private static void ex_3(Scanner scan) throws SQLException {
+        System.out.println("Enter data: ");
         String[] minionData = scan.nextLine().split("\\s+");
         String[] villain = scan.nextLine().split("\\s+");
 
@@ -163,6 +166,7 @@ public class Exercise_Database_Access_With_JDBC {
     }
 
     private static void ex_4(Scanner scan) throws SQLException {
+        System.out.println("Enter country name: ");
         String countryName = scan.nextLine();
 
         PreparedStatement updateTowns = connection.prepareStatement("UPDATE `towns` SET `name`= UPPER(`name`) WHERE `country` = ?;");
@@ -199,6 +203,55 @@ public class Exercise_Database_Access_With_JDBC {
         }else{
             System.out.println("No such villain was found");
         }
+    }
+
+    private static void ex_6() throws SQLException {
+        System.out.println("Print all minion names");
+
+        PreparedStatement stmt = connection.prepareStatement("SELECT name FROM minions");
+
+        ResultSet rs = stmt.executeQuery();
+
+        List<String> minions = new ArrayList<>();
+        while (rs.next()){
+            minions.add(rs.getString("name"));
+        }
+
+        List<String> printMinions = new ArrayList<>();
+
+        for (int i = 0; i < minions.size() / 2; i++) {
+            printMinions.add(minions.get(i));
+            printMinions.add(minions.get(minions.size() - 1 - i));
+        }
+
+        System.out.println(minions.size());
+        System.out.println(printMinions.size());
+        System.out.println(printMinions);
+    }
+
+    private static void ex_7(Scanner scan) throws SQLException {
+        System.out.println("Increase minions age");
+        int[] minionIds = Arrays.stream(scan.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
+
+        for (int i = 0; i < minionIds.length; i++) {
+            PreparedStatement lowerNames = connection.prepareStatement("UPDATE minions SET name = lower(name), age = age + 1 WHERE id = ?");
+
+            lowerNames.setInt(1, minionIds[i]);
+            lowerNames.execute();
+
+            PreparedStatement getMinions  = connection.prepareStatement("SELECT name, age FROM minions");
+
+            ResultSet rs3 = getMinions.executeQuery();
+
+            while (rs3.next()) {
+                System.out.println(rs3.getString("name") + " " + rs3.getInt("age"));
+            }
+
+        }
+    }
+
+    private static void ex_8(Scanner scan) throws SQLException {
+        
     }
 
     private static String getEntityNameById(String entityName, int entityId) throws SQLException {
