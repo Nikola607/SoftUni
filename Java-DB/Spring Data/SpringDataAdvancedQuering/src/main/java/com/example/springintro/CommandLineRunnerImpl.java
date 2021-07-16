@@ -50,10 +50,21 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
             case 8 -> exEight();
             case 9 -> exNine();
             case 10 -> exTen();
+            case 11 -> exEleven();
         }
     }
 
+    private void exEleven() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String title = br.readLine();
+
+
+        System.out.println(this.bookService.bookInfo(title));
+    }
+
     private void exTen() {
+//        this.bookService.findAllByCountOfAllCopies().forEach(System.out::println);
     }
 
     private void exNine() throws IOException {

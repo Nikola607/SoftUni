@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 public class ApplicationBeanConfiguration {
 
     @Bean
-    public BufferedReader bufferedReader(){
+    public BufferedReader bufferedReader() {
         return new BufferedReader(new InputStreamReader(System.in));
     }
 }

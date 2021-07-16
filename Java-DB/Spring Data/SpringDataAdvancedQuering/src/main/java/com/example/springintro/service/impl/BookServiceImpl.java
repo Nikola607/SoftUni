@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -69,7 +70,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<String> findAllBooksByAuthorFirstAndLastNameOrderByReleaseDate(String firstName, String lastName) {
-       return bookRepository
+        return bookRepository
                 .findAllByAuthor_FirstNameAndAuthor_LastNameOrderByReleaseDateDescTitle(firstName, lastName)
                 .stream()
                 .map(book -> String.format("%s %s %d",
@@ -144,6 +145,32 @@ public class BookServiceImpl implements BookService {
     public int findAllBooksWithTitleLongerThat(int num) {
         return bookRepository.findAllBooksWithTitleLongerThat(num);
     }
+
+    @Override
+    public String bookInfo(String title) {
+
+        StringBuilder sb = new StringBuilder();
+        Book book = this.bookRepository.findBookByTitle(title);
+        sb.append(title).append(" ").append(book.getEditionType().name())
+                .append(" ").append(book.getAgeRestriction().name()).append(" ").append(book.getPrice());
+
+        return sb.toString();
+    }
+
+//    @Override
+//    public List<String> findAllByCountOfAllCopies() {
+//        List<Object[]> list = this.bookRepository.findAllByCountOfAllCopies();
+//
+//        List<String> result = new ArrayList<>();
+//
+//        for (Object[] row : list) {
+//            String fullName =  row[1].toString();
+//            String copies =  row[0].toString();
+//
+//            result.add(String.format("%s - %s", fullName, copies));
+//        }
+//        return result;
+//    }
 
     private Book createBookFromInfo(String[] bookInfo) {
         EditionType editionType = EditionType.values()[Integer.parseInt(bookInfo[0])];

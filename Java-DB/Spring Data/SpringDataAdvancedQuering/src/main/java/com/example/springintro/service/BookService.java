@@ -34,4 +34,7 @@ public interface BookService {
 
     int findAllBooksWithTitleLongerThat(int num);
 
+    String bookInfo(String title);
+
+    // List<String> findAllByCountOfAllCopies();
 }
