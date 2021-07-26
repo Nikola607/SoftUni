@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static com.example.demo.constraint.GlobalConstraint.RESOURCES_FILES_PATH;
 
@@ -49,5 +52,24 @@ public class CategoryServiceImpl implements CategoryService {
                 .filter(validationUtil::isValid)
                 .map(categorySeedDto -> modelMapper.map(categorySeedDto, Categories.class))
                 .forEach(categoryRepository::save);
+    }
+
+    @Override
+    public Set<Categories> findRandomCategories() {
+        Set<Categories> categories = new HashSet<>();
+        int categoryCount = ThreadLocalRandom
+                .current().nextInt(1, 3);
+
+        long categoriesCount = categoryRepository.count();
+
+        for(int i = 0; i < categoryCount; i++){
+            long randomId = ThreadLocalRandom
+                    .current().nextLong(1, categoriesCount + 1);
+
+            categories.add(categoryRepository.findById(randomId)
+            .orElse(null));
+        }
+
+        return categories;
     }
 }
