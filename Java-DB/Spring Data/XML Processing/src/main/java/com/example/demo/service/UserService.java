@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.dto.UserSeedDto;
+import com.example.demo.model.dto.UserViewRootDto;
 import com.example.demo.model.entity.User;
 import org.springframework.stereotype.Service;
 
@@ -11,4 +12,7 @@ public interface UserService {
     void seedUsers(List<UserSeedDto> users);
 
     User getRandomUser();
+
+    UserViewRootDto findUsersWithMoreThatOneProduct();
+
 }

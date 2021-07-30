@@ -1,6 +1,8 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.dto.UserSeedDto;
+import com.example.demo.model.dto.UserViewRootDto;
+import com.example.demo.model.dto.UserWithSoldProductDto;
 import com.example.demo.model.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 @Component
 public class UserServiceImpl implements UserService {
@@ -25,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void seedUsers(List<UserSeedDto> users) {
-        if(userRepository.count() == 0){
+        if (userRepository.count() == 0) {
             users.stream()
                     .filter(validationUtil::isValid)
                     .map(userSeedDto -> modelMapper.map(userSeedDto, User.class))
@@ -40,5 +43,17 @@ public class UserServiceImpl implements UserService {
         return userRepository
                 .findById(getRandomId)
                 .orElse(null);
+    }
+
+    @Override
+    public UserViewRootDto findUsersWithMoreThatOneProduct() {
+        UserViewRootDto userViewRootDto = new UserViewRootDto();
+        userViewRootDto.setProducts(userRepository
+                .findAllUsersWithMoreThatOneSoldProduct()
+        .stream()
+        .map(user -> modelMapper.map(user, UserWithSoldProductDto.class))
+        .collect(Collectors.toList()));
+
+        return userViewRootDto;
     }
 }
