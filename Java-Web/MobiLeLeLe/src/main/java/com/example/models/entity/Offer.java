@@ -16,7 +16,7 @@ public class Offer extends BaseEntity{
     private BigDecimal price;
     private Transmission transmission;
     private Integer year;
-    private List<Model> models;
+    private Model models;
     private User seller;
 
     public Offer() {
@@ -85,14 +85,15 @@ public class Offer extends BaseEntity{
         this.year = year;
     }
 
-    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL)
-    public List<Model> getModels() {
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Model getModels() {
         return models;
     }
 
-    public void setModels(List<Model> models) {
+    public void setModels(Model models) {
         this.models = models;
     }
+
 
     @ManyToOne()
     public User getSeller() {
@@ -103,16 +104,5 @@ public class Offer extends BaseEntity{
         this.seller = seller;
     }
 
-    //     id – uuid or number.
-// description – some text.
-//             engine – enumerated value (GASOLINE, DIESEL, ELECTRIC, HYBRID).
-//             imageUrl – the url of image.
-//             mileage – a number.
-//             price – the price of the offer.
-// transmission – enumerated value (MANUAL, AUTOMATIC).
-//             year – the year of offered car.
-// created – a date and time.
-//             modified – a date and time.
-//             model – the model of a car.
-// seller – a user that sells the car.
+
 }
