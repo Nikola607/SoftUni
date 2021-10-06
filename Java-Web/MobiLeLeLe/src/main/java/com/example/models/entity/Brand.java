@@ -26,7 +26,7 @@ public class Brand extends BaseEntity{
         this.name = name;
     }
 
-    @Column(nullable = false)
+    @Column
     public Instant getCreated() {
         return created;
     }
