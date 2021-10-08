@@ -85,7 +85,7 @@ public class Offer extends BaseEntity{
         this.year = year;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     public Model getModels() {
         return models;
     }
