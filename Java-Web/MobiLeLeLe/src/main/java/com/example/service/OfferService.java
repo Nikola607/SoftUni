@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.models.view.OfferDetailsView;
 import com.example.models.view.OfferSummaryView;
 import org.springframework.stereotype.Service;
 
@@ -10,4 +11,6 @@ public interface OfferService {
     void initializeOffers();
 
     List<OfferSummaryView> getAllOffers();
+
+    OfferDetailsView findById(Long id);
 }

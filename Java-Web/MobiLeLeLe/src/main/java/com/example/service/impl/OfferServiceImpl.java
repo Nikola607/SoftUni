@@ -3,6 +3,7 @@ package com.example.service.impl;
 import com.example.models.entity.Offer;
 import com.example.models.entity.enums.Engine;
 import com.example.models.entity.enums.Transmission;
+import com.example.models.view.OfferDetailsView;
 import com.example.models.view.OfferSummaryView;
 import com.example.repository.ModelRepository;
 import com.example.repository.OfferRepository;
@@ -90,6 +91,12 @@ public class OfferServiceImpl implements OfferService {
                 collect(Collectors.toList());
     }
 
+    @Override
+    public OfferDetailsView findById(Long id) {
+        OfferDetailsView offerDetailsView = this.offerRepository.findById(id).map(this::mapDetailsView).get();
+        return offerDetailsView;
+    }
+
     private OfferSummaryView map(Offer offerEntity) {
         OfferSummaryView summaryView = this.modelMapper
                 .map(offerEntity, OfferSummaryView.class);
@@ -97,5 +104,13 @@ public class OfferServiceImpl implements OfferService {
         summaryView.setModel(offerEntity.getModels().getName());
 
         return summaryView;
+    }
+
+    private OfferDetailsView mapDetailsView(Offer offer) {
+        OfferDetailsView offerDetailsView = this.modelMapper.map(offer, OfferDetailsView.class);
+        offerDetailsView.setModel(offer.getModels().getName());
+        offerDetailsView.setBrand(offer.getModels().getBrand().getName());
+        offerDetailsView.setSellerFullName(offer.getSeller().getFirstName() + " " + offer.getSeller().getLastName());
+        return offerDetailsView;
     }
 }
