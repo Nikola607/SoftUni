@@ -18,7 +18,6 @@ public class OffersController {
     @GetMapping("/offers/all")
     public String allOffers(Model model){
         model.addAttribute("offers", offerService.getAllOffers());
-
         return "offers";
     }
 
@@ -30,6 +29,6 @@ public class OffersController {
 
     @GetMapping("/offers/add")
     public String addOffer(){
-        return "offers";
+        return "offer-add";
     }
 }
