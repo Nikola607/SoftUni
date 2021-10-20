@@ -1,20 +1,25 @@
-package com.example.coffeeshop.model.entities;
+package com.example.coffeeshop.model.service;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+public class UserRegisterServiceModel {
+    private Long id;
 
-@Entity(name = "users")
-public class User extends BaseEntity {
     private String username;
     private String firstName;
     private String lastName;
     private String password;
     private String email;
 
-    public User() {
+    public UserRegisterServiceModel() {
     }
 
-    @Column(nullable = false, unique = true)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -39,7 +44,6 @@ public class User extends BaseEntity {
         this.lastName = lastName;
     }
 
-    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
