@@ -1,5 +1,6 @@
 package com.example.coffeeshop.services;
 
+import com.example.coffeeshop.model.entities.User;
 import com.example.coffeeshop.model.service.UserRegisterServiceModel;
 import org.springframework.stereotype.Service;
 
@@ -10,4 +11,6 @@ public interface UserService {
     UserRegisterServiceModel findByUsernameAndPassword(String username, String password);
 
     void loginUser(Long id, String username);
+
+    User findById(Long id);
 }
