@@ -1,9 +1,9 @@
-package com.example.music.model.services.impl;
+package com.example.music.services.impl;
 
 import com.example.music.model.entities.Artist;
 import com.example.music.model.entities.enums.BandNames;
-import com.example.music.model.repositories.ArtistRepository;
-import com.example.music.model.services.ArtistService;
+import com.example.music.repositories.ArtistRepository;
+import com.example.music.services.ArtistService;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;

@@ -1,6 +1,6 @@
-package com.example.music.model.services.impl;
+package com.example.music.services.impl;
 
-import com.example.music.model.services.AlbumService;
+import com.example.music.services.AlbumService;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,19 +1,25 @@
-package com.example.music.model.entities;
+package com.example.music.model.service;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+public class UserServiceModel {
+    private Long id;
 
-@Entity(name = "users")
-public class User extends BaseEntity {
     private String username;
     private String fullName;
     private String password;
+    private String confirmPassword;
     private String email;
 
-    public User() {
+    public UserServiceModel() {
     }
 
-    @Column(nullable = false, unique = true)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -30,7 +36,6 @@ public class User extends BaseEntity {
         this.fullName = fullName;
     }
 
-    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
@@ -39,7 +44,14 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    @Column(unique = true)
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public String getEmail() {
         return email;
     }

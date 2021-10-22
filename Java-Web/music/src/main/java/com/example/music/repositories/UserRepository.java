@@ -1,4 +1,4 @@
-package com.example.music.model.repositories;
+package com.example.music.repositories;
 
 import com.example.music.model.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;

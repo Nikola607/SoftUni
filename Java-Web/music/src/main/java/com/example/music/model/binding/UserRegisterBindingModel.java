@@ -1,19 +1,19 @@
-package com.example.music.model.entities;
+package com.example.music.model.binding;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
-@Entity(name = "users")
-public class User extends BaseEntity {
+public class UserRegisterBindingModel {
     private String username;
     private String fullName;
     private String password;
+    private String confirmPassword;
     private String email;
 
-    public User() {
+    public UserRegisterBindingModel() {
     }
 
-    @Column(nullable = false, unique = true)
+    @Size(min = 3, max = 20)
     public String getUsername() {
         return username;
     }
@@ -22,6 +22,7 @@ public class User extends BaseEntity {
         this.username = username;
     }
 
+    @Size(min = 3, max = 20)
     public String getFullName() {
         return fullName;
     }
@@ -30,7 +31,7 @@ public class User extends BaseEntity {
         this.fullName = fullName;
     }
 
-    @Column(nullable = false)
+    @Size(min = 5, max = 20)
     public String getPassword() {
         return password;
     }
@@ -39,12 +40,21 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    @Column(unique = true)
+    @Email
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Size(min = 5, max = 20)
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

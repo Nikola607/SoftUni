@@ -1,6 +1,6 @@
 package com.example.music.init;
 
-import com.example.music.model.services.ArtistService;
+import com.example.music.services.ArtistService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
