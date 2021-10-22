@@ -11,4 +11,6 @@ public interface OrderService {
     OrderServiceModel addOrder(OrderServiceModel serviceModel);
 
     List<OrderViewModel> findAllOrdersByPrice();
+
+    void readyOrder(Long id);
 }
