@@ -18,7 +18,7 @@ public class ArtistServiceImpl implements ArtistService {
 
     @Override
     public void initArtists() {
-        if(artistRepository.count() != 0){
+        if(artistRepository.count() !=0){
             return;
         }
 
@@ -38,6 +38,16 @@ public class ArtistServiceImpl implements ArtistService {
                             artist.setInformation("Madonna Louise Ciccone - born and raised in Michigan, Madonna moved to New York City in 1978 to pursue a career in modern dance. After performing as a drummer, guitarist, and vocalist in the rock bands Breakfast Club and Emmy, she rose to solo stardom with her debut studio album, Madonna (1983). She followed it with a series of successful albums, including all-time bestsellers Like a Virgin (1984) and True Blue (1986) as well as Grammy Award winners Ray of Light (1998) and Confessions on a Dance Floor (2005).\n");
                             break;
                     }
+
+                    artistRepository.save(artist);
                 });
     }
+
+    @Override
+    public Artist findByArtistName(BandNames artist) {
+
+        return artistRepository.findAllByBandNames(artist)
+                .orElse(null);
+    }
+
 }
