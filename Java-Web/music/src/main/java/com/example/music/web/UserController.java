@@ -1,5 +1,6 @@
 package com.example.music.web;
 
+import com.example.music.model.binding.UserLoginBindingModel;
 import com.example.music.model.binding.UserRegisterBindingModel;
 import com.example.music.model.service.UserServiceModel;
 import com.example.music.services.UserService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -30,6 +32,22 @@ public class UserController {
     @GetMapping("/register")
     public String register(){
         return "register";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model){
+        if(!model.containsAttribute("isFound")){
+            model.addAttribute("isFound", true);
+        }
+
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession){
+        httpSession.invalidate();
+
+        return "redirect:/";
     }
 
     @PostMapping("/register")
@@ -50,17 +68,39 @@ public class UserController {
         return "redirect:login";
     }
 
-    @GetMapping("/login")
-    public String login(Model model){
-        if(!model.containsAttribute("isFound")){
-            model.addAttribute("isFound", true);
+    @PostMapping("/login")
+    public String loginConfirm(@Valid UserLoginBindingModel userLoginBindingModel,
+                               BindingResult bindingResult, RedirectAttributes redirect){
+
+        if(bindingResult.hasErrors()) {
+            redirect.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
+            redirect.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+
+            return "redirect:login";
         }
 
-        return "login";
+        UserServiceModel userServiceModel = userService
+                .findByUsernameAndPassword(userLoginBindingModel.getUsername()
+                        , userLoginBindingModel.getPassword());
+
+        if(userServiceModel == null){
+            redirect.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
+            redirect.addFlashAttribute("isFound", false);
+            return "redirect:login";
+        }
+
+        userService.loginUser(userServiceModel.getId(), userLoginBindingModel.getUsername());
+
+        return "redirect:/";
     }
 
     @ModelAttribute
     public UserRegisterBindingModel userRegisterBindingModel(){
         return new UserRegisterBindingModel();
+    }
+
+    @ModelAttribute
+    public UserLoginBindingModel userLoginBindingModel(){
+        return new UserLoginBindingModel();
     }
 }
