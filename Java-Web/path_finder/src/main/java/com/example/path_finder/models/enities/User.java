@@ -3,13 +3,14 @@ package com.example.path_finder.models.enities;
 import com.example.path_finder.models.enities.enums.LevelEnum;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "users")
 public class User extends BaseEntity{
     private String username;
     private String password;
     private String email;
-    private Role role;
+    private Set<Role> role;
     private LevelEnum level;
 
     public User() {
@@ -41,12 +42,12 @@ public class User extends BaseEntity{
         this.email = email;
     }
 
-    @ManyToOne
-    public Role getRole() {
+    @ManyToMany
+    public Set<Role> getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(Set<Role> role) {
         this.role = role;
     }
 

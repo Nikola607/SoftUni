@@ -3,6 +3,7 @@ package com.example.path_finder.models.enities;
 import com.example.path_finder.models.enities.enums.LevelEnum;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "routes")
 public class Route extends BaseEntity{
@@ -11,6 +12,7 @@ public class Route extends BaseEntity{
     private String name;
     private User author;
     private String url;
+    private Set<Categories> categories;
 
     public Route() {
     }
@@ -57,5 +59,14 @@ public class Route extends BaseEntity{
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @ManyToMany
+    public Set<Categories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Categories> categories) {
+        this.categories = categories;
     }
 }
