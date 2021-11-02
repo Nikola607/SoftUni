@@ -1,30 +1,30 @@
-package com.example.path_finder.models.enities;
+package com.example.path_finder.models.enities.service;
 
 import com.example.path_finder.models.enities.enums.LevelEnum;
 
-import javax.persistence.*;
+import javax.management.relation.Role;
 import java.util.Set;
 
-@Entity(name = "users")
-public class User extends BaseEntity{
-    private String username;
+public class UserServiceModel {
+    private Long id;
+
     private String fullName;
+    private String username;
     private String password;
-    private Integer age;
     private String email;
-    private Set<Role> role;
+    private Integer age;
     private LevelEnum level;
+    private Set<Role> roles;
 
-    public User() {
+    public UserServiceModel() {
     }
 
-    @Column(nullable = false)
-    public String getUsername() {
-        return username;
+    public Long getId() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFullName() {
@@ -35,7 +35,14 @@ public class User extends BaseEntity{
         this.fullName = fullName;
     }
 
-    @Column(nullable = false)
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -60,22 +67,19 @@ public class User extends BaseEntity{
         this.age = age;
     }
 
-    @ManyToMany
-    public Set<Role> getRole() {
-        return role;
-    }
-
-    public void setRole(Set<Role> role) {
-        this.role = role;
-    }
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     public LevelEnum getLevel() {
         return level;
     }
 
     public void setLevel(LevelEnum level) {
         this.level = level;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
