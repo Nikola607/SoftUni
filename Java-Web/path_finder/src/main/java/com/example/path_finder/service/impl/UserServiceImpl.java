@@ -5,6 +5,7 @@ import com.example.path_finder.models.enities.User;
 import com.example.path_finder.models.enities.enums.LevelEnum;
 import com.example.path_finder.models.enities.enums.RoleNameEnum;
 import com.example.path_finder.models.enities.service.UserServiceModel;
+import com.example.path_finder.repository.RoleRepository;
 import com.example.path_finder.repository.UserRepository;
 import com.example.path_finder.security.CurrentUser;
 import com.example.path_finder.service.UserService;
@@ -16,19 +17,29 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
     private final CurrentUser currentUser;
+    private final RoleRepository roleRepository;
 
-    public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository, CurrentUser currentUser) {
+    public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository, CurrentUser currentUser, RoleRepository roleRepository) {
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
         this.currentUser = currentUser;
+        this.roleRepository = roleRepository;
     }
 
     @Override
-    public UserServiceModel registerUser(UserServiceModel userRegisterServiceModel) {
-        User user = modelMapper.map(userRegisterServiceModel, User.class);
-        user.setLevel(LevelEnum.BEGINNER);
+    public UserServiceModel registerUser(UserServiceModel userServiceModel) {
+        Role userRole = roleRepository.findByName(RoleNameEnum.USER);
+        Role adminRole = roleRepository.findByName(RoleNameEnum.ADMIN);
+        userServiceModel.getRoles().add(userRole);
+        if (userRepository.count() == 0) {
+            userServiceModel.getRoles().add(adminRole);
+        }
+        User newUser = modelMapper.map(userServiceModel, User.class);
 
-        return modelMapper.map(userRepository.save(user), UserServiceModel.class);
+        newUser.setLevel(LevelEnum.BEGINNER);
+        userRepository.save(newUser);
+
+        return modelMapper.map(userRepository.save(newUser), UserServiceModel.class);
     }
 
     @Override

@@ -1,8 +1,9 @@
 package com.example.path_finder.models.enities.service;
 
+import com.example.path_finder.models.enities.Role;
 import com.example.path_finder.models.enities.enums.LevelEnum;
 
-import javax.management.relation.Role;
+import java.util.HashSet;
 import java.util.Set;
 
 public class UserServiceModel {
@@ -14,7 +15,7 @@ public class UserServiceModel {
     private String email;
     private Integer age;
     private LevelEnum level;
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     public UserServiceModel() {
     }
