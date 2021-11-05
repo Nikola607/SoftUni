@@ -40,10 +40,10 @@
                     <a href="/routes/add">Add new route</a>
                 </li>
                 <li>
-                    <a href="/users/profile">Profile</a>
+                    <a th:href="@{/users/profile/{username}(username=${@currentUser.username})}">Profile</a>
                 </li>
                 <li>
-                    <a href="/">Admin</a>
+                    <a th:if="${@currentUser.isAdmin()}" th:href="@{/users/admin}">Admin</a>
                 </li>
                 <li>
                     <a href="/users/logout">Logout</a>

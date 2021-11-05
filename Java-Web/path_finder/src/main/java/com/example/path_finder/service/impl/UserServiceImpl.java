@@ -5,12 +5,15 @@ import com.example.path_finder.models.enities.User;
 import com.example.path_finder.models.enities.enums.LevelEnum;
 import com.example.path_finder.models.enities.enums.RoleNameEnum;
 import com.example.path_finder.models.enities.service.UserServiceModel;
+import com.example.path_finder.models.view.UserProfileView;
 import com.example.path_finder.repository.RoleRepository;
 import com.example.path_finder.repository.UserRepository;
 import com.example.path_finder.security.CurrentUser;
 import com.example.path_finder.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 @Component
 public class UserServiceImpl implements UserService {
@@ -50,8 +53,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void loginUser(Long id, String username) {
-        currentUser.setUsername(username);
+    public void loginUser(Long id, String username, String fullName, Set<Role> roles) {
+        currentUser.setLoggedIn(true);
         currentUser.setId(id);
+        currentUser.setUsername(username);
+        currentUser.setFullName(fullName);
+        currentUser.setRoles(roles);
+    }
+
+    @Override
+    public UserProfileView findByUsername(String username) {
+
+        return modelMapper.map(userRepository.findByUsername(username), UserProfileView.class);
     }
 }

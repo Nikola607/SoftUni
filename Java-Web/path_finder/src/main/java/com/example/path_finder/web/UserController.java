@@ -6,11 +6,9 @@ import com.example.path_finder.models.enities.service.UserServiceModel;
 import com.example.path_finder.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -35,6 +33,12 @@ public class UserController {
     @GetMapping("/register")
     private String register(){
         return "register";
+    }
+
+    @GetMapping("/profile/{username}")
+    private String profile(@PathVariable String username, Model model){
+        model.addAttribute("user", userService.findByUsername(username));
+        return "profile";
     }
 
     @PostMapping("/register")
@@ -74,7 +78,8 @@ public class UserController {
             return "redirect:login";
         }
 
-        userService.loginUser(userServiceModel.getId(), userLoginBindingModel.getUsername());
+        userService.loginUser(userServiceModel.getId(), userLoginBindingModel.getUsername(),
+                userServiceModel.getFullName(), userServiceModel.getRoles());
 
         return "redirect:/";
     }
