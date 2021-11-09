@@ -2,7 +2,6 @@ package personal.project.two_vago.models.entities;
 
 import personal.project.two_vago.models.entities.enums.RoleNameEnum;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,7 +14,6 @@ public class Role extends BaseEntity{
     }
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     public RoleNameEnum getRoleName() {
         return roleName;
     }

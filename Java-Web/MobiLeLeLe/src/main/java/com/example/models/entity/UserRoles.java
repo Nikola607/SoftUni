@@ -4,6 +4,8 @@ import com.example.models.entity.enums.Role;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity(name = "roles")
 public class UserRoles extends BaseEntity{
@@ -13,6 +15,7 @@ public class UserRoles extends BaseEntity{
     }
 
     @Column
+    @Enumerated(EnumType.STRING)
     public Role getRole() {
         return role;
     }
