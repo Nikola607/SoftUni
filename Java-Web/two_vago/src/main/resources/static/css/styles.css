@@ -4,8 +4,8 @@ body {
 
 .hotel-images-transition{
     position: absolute;
-    left: 850px;
-    bottom: 150px;
+    left: 800px;
+    bottom: 100px;
 }
 
 
@@ -13,7 +13,6 @@ body {
     position: relative;
     background-color: darkblue;
     border-color: darkblue;
-    color:aquamarin;
     bottom: 20;
     
 }

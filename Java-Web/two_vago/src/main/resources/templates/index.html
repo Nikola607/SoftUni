@@ -1,104 +1,58 @@
-<html>
-
-<head>
-  <title>Twovago</title>
-  <link rel="stylesheet" href="styles.css">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>\
-</head>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons.html::nav"></head>
 
 <body>
-  <nav class="navbar navbar-default">
-      <div class="container-fluid">
-          <div class="navbar-header">
-              <a href="index.html">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Trivago-2018.svg/1280px-Trivago-2018.svg.png"
-            alt="Twovago" width="auto" height="35" />
-                </a>
-            </div>
-
-          <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Хотели у Софията</a></li>
-              <li><a href="#">Хотели у Перника</a></li>
-              <li><a href="#">Хотели у Костинброда</a></li>
-            </ul>
-
-      <div class="fuckin-form">
-        <form class="navbar-form navbar-left" action="/action_page.php">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <!-- <button type="submit" class="btn btn-default">Submit</button> -->
-        </form>
-      </div>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-       
-    </div>
-  </nav>
-  <!-- <div class="logo">
-    <a href="index.html">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Trivago-2018.svg/1280px-Trivago-2018.svg.png"
-        alt="Twovago" width="150" height="auto" />
-  </div> -->
-  <!-- <div class="top-buttons">
-    <button type="button" class="btn btn-primary">View Offers</button>
-    <a class="btn btn-primary" href="twovago.html" role="button">Link</a>
-  </div> -->
-  <div class="lorem-ipsum">
+<header th:replace="fragments/commons.html::header"></header>
+<div class="lorem-ipsum">
     <h2 class="lorem-ipsum h2">Lorem Ipsum</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Enim nulla aliquet porttitor lacus luctus accumsan tortor. Est placerat in egestas erat imperdiet
-      sed. Diam ut venenatis tellus in metus vulputate eu. Ut enim blandit volutpat maecenas. Duis ultricies lacus sed
-      turpis tincidunt id aliquet risus feugiat. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Purus
-      in massa tempor nec feugiat nisl. Ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim. Id
-      diam vel quam elementum pulvinar. Etiam dignissim diam quis enim lobortis. Duis convallis convallis tellus id
-      interdum velit laoreet id donec. Nibh sit amet commodo nulla facilisi. Purus in mollis nunc sed id semper risus
-      in. Tincidunt eget nullam non nisi est sit amet facilisis magna. Diam quam nulla porttitor massa.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Enim nulla aliquet porttitor lacus luctus accumsan tortor. Est placerat in egestas erat imperdiet
+        sed. Diam ut venenatis tellus in metus vulputate eu. Ut enim blandit volutpat maecenas. Duis ultricies lacus sed
+        turpis tincidunt id aliquet risus feugiat. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel.
+        Purus
+        in massa tempor nec feugiat nisl. Ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim.
+        Id
+        diam vel quam elementum pulvinar. Etiam dignissim diam quis enim lobortis. Duis convallis convallis tellus id
+        interdum velit laoreet id donec. Nibh sit amet commodo nulla facilisi. Purus in mollis nunc sed id semper risus
+        in. Tincidunt eget nullam non nisi est sit amet facilisis magna. Diam quam nulla porttitor massa.
     </p>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Enim nulla aliquet porttitor lacus luctus accumsan tortor. Est placerat in egestas erat imperdiet
-      sed. Diam ut venenatis tellus in metus vulputate eu. Ut enim blandit volutpat maecenas. Duis ultricies lacus sed
-      turpis tincidunt id aliquet risus feugiat. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel.
-      Purus
-      in massa tempor nec feugiat nisl. Ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim.
-      Id
-      diam vel quam elementum pulvinar. Etiam dignissim diam quis enim lobortis. Duis convallis convallis tellus id
-      interdum velit laoreet id donec. Nibh sit amet commodo nulla facilisi. Purus in mollis nunc sed id semper risus
-      in. Tincidunt eget nullam non nisi est sit amet facilisis magna. Diam quam nulla porttitor massa.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Enim nulla aliquet porttitor lacus luctus accumsan tortor. Est placerat in egestas erat imperdiet
+        sed. Diam ut venenatis tellus in metus vulputate eu. Ut enim blandit volutpat maecenas. Duis ultricies lacus sed
+        turpis tincidunt id aliquet risus feugiat. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel.
+        Purus
+        in massa tempor nec feugiat nisl. Ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim.
+        Id
+        diam vel quam elementum pulvinar. Etiam dignissim diam quis enim lobortis. Duis convallis convallis tellus id
+        interdum velit laoreet id donec. Nibh sit amet commodo nulla facilisi. Purus in mollis nunc sed id semper risus
+        in. Tincidunt eget nullam non nisi est sit amet facilisis magna. Diam quam nulla porttitor massa.
     </p>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Enim nulla aliquet porttitor lacus luctus accumsan tortor. Est placerat in egestas erat imperdiet
-      sed. Diam ut venenatis tellus in metus vulputate eu. Ut enim blandit volutpat maecenas. Duis ultricies lacus sed
-      turpis tincidunt id aliquet risus feugiat. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel.
-      Purus
-      in massa tempor nec feugiat nisl. Ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim.
-      Id
-      diam vel quam elementum pulvinar. Etiam dignissim diam quis enim lobortis. Duis convallis convallis tellus id
-      interdum velit laoreet id donec. Nibh sit amet commodo nulla facilisi. Purus in mollis nunc sed id semper risus
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Enim nulla aliquet porttitor lacus luctus accumsan tortor. Est placerat in egestas erat imperdiet
+        sed. Diam ut venenatis tellus in metus vulputate eu. Ut enim blandit volutpat maecenas. Duis ultricies lacus sed
+        turpis tincidunt id aliquet risus feugiat. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel.
+        Purus
+        in massa tempor nec feugiat nisl. Ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim.
+        Id
+        diam vel quam elementum pulvinar. Etiam dignissim diam quis enim lobortis. Duis convallis convallis tellus id
+        interdum velit laoreet id donec. Nibh sit amet commodo nulla facilisi. Purus in mollis nunc sed id semper risus
     </p>
-  </div>
-  <div class=hotel-images>
+</div>
+<div class=hotel-images>
     <div class="scroll-image">
-      <img src="1.png" class="hotel-images-transition" />
-      <img src="2.png" class="hotel-images-transition" />
-      <img src="3.png" class="hotel-images-transition" />
+        <img src="/images/1.png" class="hotel-images-transition"/>
+        <img src="/images/2.png" class="hotel-images-transition"/>
+        <img src="/images/3.png" class="hotel-images-transition"/>
     </div>
 
-    <script type="text/javascript" src="image-transition.js"></script>
+    <script type="text/javascript" src="/js/image-transition.js"></script>
 
-  </div>
+</div>
 </body>
 
 </html>
