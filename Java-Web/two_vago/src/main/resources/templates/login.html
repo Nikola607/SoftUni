@@ -1,33 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/commons.html::head">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/login_styles.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/navigation_styles.css">
+</head>
+
 <body>
-<form th:action="@{/users/login}" th:object="${userLoginBindingModel}"
-      class=" text-center text-light" th:method="post">
-    <div class="container">
-        <h1>Login</h1>
-        <hr>
+    <header th:replace="fragments/commons.html::nav"></header>
+    <form th:action="@{/users/login}" th:object="${userLoginBindingModel}" th:method="post">
+        <div class="container">
 
-        <div class="col-sm-22">
-            <input th:field="*{username}" th:errorclass="is-invalid" class="form-control"
-                   type="text" placeholder="Enter Username" name="username"
-                   aria-describedby="usernameHelpInline" id="username" required>
-            <small id="usernameHelpInline" class="invalid-feedback bg-danger text-light rounded">
-                Username length must be between 5 and 20 characters.
-            </small>
-        </div>
+            <div class="col-sm-8 col-sm-offset-2 main">
+                <div class="col-sm-6 left-side">
+                    <h1>Hi<br>again!</h1>
+                    <p>We hope you enjoy your stay.</p>
+                    <br>
+                    <p>Don't have an account?
+                        <a style="color:skyblue" href="/users/register">Register</a>
+                    </p>
+                </div>
+                <!--col-sm-6-->
 
-        <div class="col-sm-22">
-            <input th:field="*{password}" th:errorclass="is-invalid" class="form-control"
-                   aria-describedby="passwordHelpInline" type="password" placeholder="Enter Password" name="psw"
-                   id="psw" required>
-            <small id="passwordHelpInline" class="invalid-feedback bg-danger text-light rounded">
-                Username length must be between 5 and 20 characters.
-            </small>
+                <div class="col-sm-6 right-side">
+                    <h1>Login</h1>
+                    <!--Form with header-->
+                    <div class="form">
+                        <div class="form-group">
+                            <label for="form2">Your username:</label>
+                            <input th:field="*{username}" th:errorclass="is-invalid" class="form-control" type="text"
+                                placeholder="Username" name="username" aria-describedby="usernameHelpInline"
+                                id="username" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form4">Your password:</label>
+                            <input th:field="*{password}" th:errorclass="is-invalid" class="form-control"
+                                aria-describedby="passwordHelpInline" type="password" placeholder="Password" name="psw"
+                                id="psw" required>
+
+                        </div>
+
+                        <button type="submit" class="loginbtn">Login</button>
+
+                    </div>
+                    <!--/Form with header-->
+
+                </div>
+                <!--col-sm-6-->
+
+            </div>
+            <!--col-sm-8-->
+
         </div>
-        <button type="submit" class="loginbtn">Login</button>
-    </div>
-</form>
 </body>
+
 </html>

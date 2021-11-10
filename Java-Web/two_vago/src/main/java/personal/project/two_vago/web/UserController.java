@@ -63,7 +63,7 @@ public class UserController {
             return "redirect:register";
         }
 
-        userService.registerUser(modelMapper
+        userService.    registerUser(modelMapper
                 .map(userRegisterBindingModel, UserServiceModel.class));
 
         return "redirect:login";

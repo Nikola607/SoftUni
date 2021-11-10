@@ -1,0 +1,116 @@
+.logo {
+    display: inline;
+    max-inline-size: 160px;
+}
+
+a.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    text-decoration: none;
+    color: orangered;
+    font-family: cursive;
+    font-weight: 700;
+}
+
+nav.main-navigation {
+    position: relative;
+    background-color: skyblue;
+    border-color: #404040;
+    border-bottom: 2px solid;
+    animation: FadeIn 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+    animation-fill-mode: both;
+}
+
+nav.main-navigation ul.nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    text-align: right;
+}
+
+.nav-list li.nav-list-item {
+    display: inline-block;
+    line-height: 40px;
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+a.nav-link {
+    right: 25px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    color: #404040;
+}
+
+.nav-list li {
+    animation: FadeIn 1s cubic-bezier(0.65, 0.05, 0.36, 1);
+    animation-fill-mode: both;
+}
+
+.nav-list li:nth-child(1) {
+    animation-delay: .2s;
+}
+
+.nav-list li:nth-child(2) {
+    animation-delay: .3s;
+}
+
+.nav-list li:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.nav-list li:nth-child(4) {
+    animation-delay: .5s;
+}
+
+.nav-list li:nth-child(5) {
+    animation-delay: .6s;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(10px, 40px, 10px)
+    }
+
+    to {
+        transform: translate3d(10px, 8px, 10px);
+        opacity: 1
+    }
+}
+
+@keyframes FadeIn {
+    0% {
+        opacity: 0;
+        transition-duration: 0.5s;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+.animated {
+    animation-duration: 0.6s;
+    animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+}
