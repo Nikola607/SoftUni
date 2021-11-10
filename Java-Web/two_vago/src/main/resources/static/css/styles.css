@@ -2,34 +2,44 @@ body {
     background-image: url('https://wallpapercave.com/wp/wp8448705.jpg') !important;
 }
 
-.hotel-images-transition{
+.hotel-images-transition {
     position: absolute;
     left: 800px;
-    bottom: 100px;
+    top: 100px;
+    max-block-size: 25%;
 }
 
+.carousel {
+    position:relative;
+    display: table-cell;
+    left: 100%;
+}
 
 .navbar.navbar-default {
     position: relative;
     background-color: darkblue;
     border-color: darkblue;
-    bottom: 20;
-    
+    max-height: 40px;
 }
 
 .navbar.navbar-default.nav.navbar-nav.active {
     background-color: red;
 }
 
-.form-group{
+.logo {
+    display: inline;
+    max-inline-size: 160px;
+    top: 10px;
+}
+
+.form-group {
     position:relative;
     display: inline;
 }
 
-.fuckin-form{
-    position:relative;
-    left: 250;
-    display: inline;
+.password-field {
+    padding-top: 5px;
+    margin-top: 20px;
 }
 
 .top-buttons {
@@ -39,9 +49,6 @@ body {
     display: inline-block;
 }
 
-.logo {
-    display: inline;
-}
 
 .lorem-ipsum {
     margin-top: 60px;
