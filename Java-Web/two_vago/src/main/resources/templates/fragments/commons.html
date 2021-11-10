@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head th:fragment="head">
     <title>Twovago</title>
     <link rel="stylesheet" href="/css/styles.css">
@@ -10,48 +10,123 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-<header th:fragment="nav">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="/">
-                    <img
-                            src="/images/two_vago_logo.png"
-                            alt="Twovago" width="auto" height="35"/>
-                </a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/">View Offers</a></li>
-                <li><a href="/">Add Offer</a></li>
-            </ul>
-            <div class="fuckin-form">
-                <form class="navbar-form navbar-left" action="/action_page.php">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                </form>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
+    <header th:fragment="nav">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="/">
+                        <img class="logo" src="/images/two_vago_logo.png" alt="Twovago" />
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/">Action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/">Something else here</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/">View Offers</a></li>
+                    <li><a href="/">Add Offer</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/">Action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/">Something else here</a>
+                        </div>
+                    </li>
+                    <li><a data-toggle="modal" data-target="#registerModal"><span
+                                class="glyphicon glyphicon-user"></span>Register</a>
+                    </li>
+
+                    <div class="modal fade" id="registerModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Register an account</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <p></p>
+                                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="Enter email">
+                                            <small id="emailHelp" class="form-text text-muted">We promise to never send
+                                                you anything</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="password-field">
+                                                <label for="exampleInputPassword1">Password</label>
+                                                <p></p>
+                                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">I agree my data can be
+                                                sold to the highest bidder</label>
+                                        </div>
+                                        <p></p>
+                                        <button type="submit" class="btn btn-primary">Log in</button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li><a href="/users/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-                <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
+
+                    <li><a data-toggle="modal" data-target="#loginModal"><span
+                                class="glyphicon glyphicon-log-in"></span>
+                            Login</a></li>
+
+                    <div class="modal fade" id="loginModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Log into your account</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <p></p>
+                                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="Enter email">
+                                            <!-- <small id="emailHelp" class="form-text text-muted">We promise to never send
+                                                you anything</small> -->
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="password-field">
+                                                <label for="exampleInputPassword1">Password</label>
+                                                <p></p>
+                                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Password">
+                                            </div>
+                                        </div>
+
+                                        <p></p>
+                                        <button type="submit" class="btn btn-primary">Log in</button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
 </body>
+
 </html>
