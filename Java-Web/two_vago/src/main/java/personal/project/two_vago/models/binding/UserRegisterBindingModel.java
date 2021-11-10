@@ -3,7 +3,6 @@ package personal.project.two_vago.models.binding;
 import personal.project.two_vago.models.entities.enums.RoleNameEnum;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 

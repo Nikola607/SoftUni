@@ -1,5 +1,5 @@
 body { 
-    background-image: url('https://wallpapercave.com/wp/wp8448705.jpg') !important;
+  background-color: #4b4b4b !important;
 }
 
 .hotel-images-transition {
@@ -17,13 +17,8 @@ body {
 
 .navbar.navbar-default {
     position: relative;
-    background-color: darkblue;
-    border-color: darkblue;
+    background-color: #083c85;
     max-height: 40px;
-}
-
-.navbar.navbar-default.nav.navbar-nav.active {
-    background-color: red;
 }
 
 .logo {

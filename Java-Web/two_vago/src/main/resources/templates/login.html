@@ -3,25 +3,30 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/commons.html::head">
 <body>
-<form action="action_page.php" class=" text-center text-light" method="post">
+<form th:action="@{/users/login}" th:object="${userLoginBindingModel}"
+      class=" text-center text-light" th:method="post">
     <div class="container">
         <h1>Login</h1>
         <hr>
 
         <div class="col-sm-22">
-            <input type="text" placeholder="Enter Username" name="username"
+            <input th:field="*{username}" th:errorclass="is-invalid" class="form-control"
+                   type="text" placeholder="Enter Username" name="username"
                    aria-describedby="usernameHelpInline" id="username" required>
-            <small class="bg-danger text-light rounded">
+            <small id="usernameHelpInline" class="invalid-feedback bg-danger text-light rounded">
                 Username length must be between 5 and 20 characters.
             </small>
         </div>
 
         <div class="col-sm-22">
-            <input type="password" placeholder="Enter Password" name="password" id="password" required>
-            <small class="bg-danger text-light rounded">
+            <input th:field="*{password}" th:errorclass="is-invalid" class="form-control"
+                   aria-describedby="passwordHelpInline" type="password" placeholder="Enter Password" name="psw"
+                   id="psw" required>
+            <small id="passwordHelpInline" class="invalid-feedback bg-danger text-light rounded">
                 Username length must be between 5 and 20 characters.
             </small>
         </div>
+        <button type="submit" class="loginbtn">Login</button>
     </div>
 </form>
 </body>
