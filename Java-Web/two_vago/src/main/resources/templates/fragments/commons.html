@@ -12,40 +12,42 @@
 </head>
 
 <body>
-    <header th:fragment="nav">
-        <nav class="main-navigation">
-            <div class="navbar-header animated fadeInUp">
-                <img class="logo" src="/images/two_vago_logo.png" alt="Twovago" href="/" />
-            </div>
-            <ul class="nav-list">
+<header th:fragment="nav">
+    <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            <a href="/">
+                <img class="logo" src="/images/two_vago_logo.png" alt="Twovago"/>
+            </a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a href="/" class="nav-link">Home</a>
+            </li>
+            <th:block th:unless="${@currentUser.id == null}">
                 <li class="nav-list-item">
-                    <a href="/" class="nav-link">Home</a>
+                    <a href="/offers/add" class="nav-link">Add Offer</a>
                 </li>
-                <th:block th:unless="${@currentUser.id == null}">
-                    <li class="nav-list-item">
-                        <a href="/offers/add" class="nav-link">Add Offer</a>
-                    </li>
-                    <li class="nav-list-item">
-                        <a href="/" class="nav-link">View Offers</a>
-                    </li>
-                </th:block>
-                <th:block th:if="${@currentUser.id == null}">
-                    <li class="nav-list-item">
-                        <a href="/users/register" class="nav-link">Register</a>
-                    </li>
-                    <li class="nav-list-item">
-                        <a href="/users/login" class="nav-link">Login</a>
-                    </li>
-                </th:block>
-                <th:block th:unless="${@currentUser.id == null}">
-                    <li class="nav-list-item">
-                        <a href="/users/logout"> Logout</a>
-                    </li>
-                </th:block>
-            </ul>
+                <li class="nav-list-item">
+                    <a href="/" class="nav-link">View Offers</a>
+                </li>
+            </th:block>
+            <th:block th:if="${@currentUser.id == null}">
+                <li class="nav-list-item">
+                    <a href="/users/register" class="nav-link">Register</a>
+                </li>
+                <li class="nav-list-item">
+                    <a href="/users/login" class="nav-link">Login</a>
+                </li>
+            </th:block>
+            <th:block th:unless="${@currentUser.id == null}">
+                <li class="nav-list-item">
+                    <a href="/users/logout"> Logout</a>
+                </li>
+            </th:block>
+        </ul>
 
-        </nav>
-    </header>
+    </nav>
+</header>
 </body>
 
 </html>

@@ -11,7 +11,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import personal.project.two_vago.models.binding.UserLoginBindingModel;
 import personal.project.two_vago.models.binding.UserRegisterBindingModel;
 import personal.project.two_vago.models.service.UserServiceModel;
-import personal.project.two_vago.security.CurrentUser;
 import personal.project.two_vago.service.UserService;
 
 import javax.servlet.http.HttpSession;
@@ -46,7 +45,7 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    private String profile(){
+    private String profile() {
         return "profile";
     }
 
@@ -63,7 +62,7 @@ public class UserController {
             return "redirect:register";
         }
 
-        userService.    registerUser(modelMapper
+        userService.registerUser(modelMapper
                 .map(userRegisterBindingModel, UserServiceModel.class));
 
         return "redirect:login";
