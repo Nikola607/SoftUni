@@ -1,116 +1,277 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/commons.html::head">
+<head>
     <link rel="stylesheet" href="/css/index_styles.css">
+    <link rel="stylesheet" href="/css/navigation_styles.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
-    <header th:replace="fragments/commons.html::nav"></header>
-    <h1>Lorem Ipsum</h1>
+    <div class="nav-wrapper" style="height:70px;">
+        <header th:replace="fragments/commons.html::nav"></header>
+    </div>
+
+    <div class="hot-offers">
+        <h1>Sum hot dealz</h1>
+    </div>
+
+    <section class="new-deal">
+        <div class="container">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
+                <div class="item-slide">
+                    <div class="box-img">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/40778632.jpg?k=a385de720bd1fce29476c72bba07d446a483a2142c59d5b9280984059e435d5d&o=&hp=1"
+                            alt="dasdas" />
+                        <div class="text-wrap">
+                            <h4>Velingrad, Bulgaria <span class="deal-data"></h4>
+                            <div class="desc">
+                                <span>Starting from</span>
+                                <h3>$1000</h3>
+                            </div>
+                            <div class="book-now-c" style="visibility: hidden;">
+                                <a href="#">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-hover">
+                        <div class="text-wrap">
+                            <p>Grand Hotel Velingrad offers a panoramic view to its guests of the whole town and the
+                                beautiful nature
+                                that surrounds it.</p>
+                            <h4 class="hidden">Velingrad, Bulgaria <span class="deal-data"><span
+                                        class="glyphicon glyphicon-calendar"></span>
+                                    Sun, Jan 29 - Tue, Jan 31</span></h4>
+                            <div class="book-now-c">
+                                <a href="#">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal">
+                <div class="item-slide">
+                    <div class="box-img">
+                        <img src="https://rezervaciq.com/img/objects/1557907530-vila-em-9885.jpg" alt="dasdas" />
+                        <div class="text-wrap">
+                            <h4>Lozenetz, Bulgaria</h4>
+                            <div class="desc">
+                                <span>Starting from</span>
+                                <h3>$600</h3>
+                            </div>
+                            <div class="book-now-c" style="visibility: hidden;">
+                                <a href="#">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-hover">
+                        <div class="text-wrap">
+                            <p>Villa EM features a restaurant, seasonal outdoor swimming pool, a shared lounge and
+                                garden in Lozenets.</p>
+                            <h4 class="hidden">Lozenetz, Bulgaria <span class="deal-data"><span
+                                        class="glyphicon glyphicon-calendar"></span>
+                                    Sun, Jan 29 - Tue, Jan 31</span></h4>
+                            <div class="desc">
+                            </div>
+                            <div class="book-now-c">
+                                <a href="#">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal">
+                <div class="item-slide">
+                    <div class="box-img">
+                        <img src="https://www.4suiteshq.com/wp-content/uploads/2020/03/173429314-500x334.jpg"
+                            alt="dasdas" />
+                        <div class="text-wrap">
+                            <h4>Lozenetz, Bulgaria</h4>
+                            <div class="desc">
+                                <span>Starting from</span>
+                                <h3>$1000</h3>
+                            </div>
+                            <div class="book-now-c" style="visibility: hidden;">
+                                <a href="#">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-hover">
+                        <div class="text-wrap">
+                            <p>Hotel Luxor offers a pool and free deckchairs, a large garden with a children’s
+                                playground and free Wi-Fi connection in the entire building.</p>
+                            <h4 class="hidden">Lozenetz, Bulgaria <span class="deal-data"><span
+                                        class="glyphicon glyphicon-calendar"></span>
+                                    Sun, Jan 29 - Tue, Jan 31</span></h4>
+                            <div class="desc">
+                            </div>
+                            <div class="book-now-c">
+                                <a href="#">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <div class="container-text">
         <p>What is Lorem Ipsum?
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
             industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+            into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+            release of
             Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
 
             Why do we use it?
             It is a long established fact that a reader will be distracted by the readable content of a page when
-            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
+            of
             letters, as opposed to using 'Content here, content here', making it look like readable English. Many
             desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
-            search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved
+            search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
+            evolved
             over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
 
 
             Where does it come from?
             Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
             Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem
-            Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
-            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
-            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular
-            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
+            in
             section 1.10.32.</p>
         What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+        industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+        make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic
+        typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+        containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions
         of Lorem Ipsum.
 
         Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at
+        It is a long established fact that a reader will be distracted by the readable content of a page when
+        looking at
         its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
         opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
-        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
+        ipsum'
+        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes
+        by
         accident, sometimes on purpose (injected humour and the like).
 
 
         Where does it come from?
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
-        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+        Latin
+        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+        Hampden-Sydney
+        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
+        and
         going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
-        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
-        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
+        by
+        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
+        Renaissance.
         The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.What is
         Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+        industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+        make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic
+        typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+        containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions
         of Lorem Ipsum.
 
         Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at
+        It is a long established fact that a reader will be distracted by the readable content of a page when
+        looking at
         its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
         opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
-        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
+        ipsum'
+        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes
+        by
         accident, sometimes on purpose (injected humour and the like).
 
 
         Where does it come from?
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
-        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+        Latin
+        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+        Hampden-Sydney
+        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
+        and
         going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
-        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
-        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
+        by
+        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
+        Renaissance.
         The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
         Where does it come from?
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
-        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+        Latin
+        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+        Hampden-Sydney
+        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
+        and
         going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
-        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
-        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
+        by
+        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
+        Renaissance.
         The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
         Where does it come from?
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
-        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+        Latin
+        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+        Hampden-Sydney
+        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
+        and
         going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
-        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
-        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
+        by
+        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
+        Renaissance.
         The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
         Where does it come from?
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
-        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+        Latin
+        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+        Hampden-Sydney
+        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
+        and
         going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
-        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
-        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
+        by
+        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
+        Renaissance.
         The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
