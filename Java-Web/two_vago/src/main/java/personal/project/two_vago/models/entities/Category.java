@@ -4,6 +4,8 @@ import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity(name = "categories")
 public class Category extends BaseEntity{
@@ -13,7 +15,8 @@ public class Category extends BaseEntity{
     public Category() {
     }
 
-    @Column(nullable = false, columnDefinition = "Text")
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     public CategoryNameEnum getCategoryName() {
         return categoryName;
     }

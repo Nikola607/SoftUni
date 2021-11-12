@@ -46,6 +46,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void initializeRoles() {
+        if(roleRepository.count() !=0){
+            return;
+        }
 
         if (userRepository.count() == 0) {
             Role adminRole = new Role();
@@ -70,5 +73,12 @@ public class UserServiceImpl implements UserService {
         currentUser.setId(id);
         currentUser.setFullName(fullName);
         currentUser.setRole(role);
+    }
+
+    @Override
+    public User findById(Long id) {
+
+        return userRepository.findById(id)
+                .orElse(null);
     }
 }

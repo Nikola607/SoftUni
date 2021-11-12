@@ -242,6 +242,7 @@ h1{
     width: 100%;
     left: 0;
     top: -70px;
+    margin-top: -1px;
     max-height: 42px;
     background: #9100ff;
     position: fixed;
