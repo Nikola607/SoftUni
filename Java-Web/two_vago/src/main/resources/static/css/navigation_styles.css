@@ -1,5 +1,5 @@
 .logo{
-    max-height: 40px;
+    max-height: 45px;
         position: relative;
         right: 55px;
         bottom: 15px;
@@ -27,20 +27,18 @@ body{
     }
 
 h1{
-    color: white !important;
+    color: white;
     font-weight: 500 !important;
-    text-align: center;
-    padding-top: 100px;
 }
 
 .main_header_area {
-    position: absolute;
+    position: relative;
     width: 100%;
-    z-index: 25;
+    z-index: 900;
     background: #9100ff;
     top: 0px;
     max-height: 70px;
-    margin-bottom: 100px;
+    animation: FadeIn 1s cubic-bezier(0.65, 0.05, 0.36, 1); 
   }
   
   .header_top .header_top_inner {
@@ -244,7 +242,7 @@ h1{
     width: 100%;
     left: 0;
     top: -70px;
-    max-height: 40px;
+    max-height: 42px;
     background: #9100ff;
     position: fixed;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
@@ -293,3 +291,18 @@ h1{
   .navbar_fixed.main_header_area_three .navbar .nav .nav-item > a {
     line-height: 70px;
   }
+  
+  @keyframes FadeIn {
+    0% {
+        opacity: 0;
+        transition-duration: 0.5s;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
