@@ -1,27 +1,23 @@
-package personal.project.two_vago.models.service;
+package personal.project.two_vago.models.entities.view;
 
 import personal.project.two_vago.models.entities.Category;
 import personal.project.two_vago.models.entities.City;
+import personal.project.two_vago.models.entities.Review;
 import personal.project.two_vago.models.entities.User;
-import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
-import personal.project.two_vago.models.entities.enums.CityNameEnum;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
-public class OfferServiceModel {
+public class OfferSummaryView {
     private Long id;
-
     private String offerName;
     private BigDecimal price;
     private String coordinates;
-    private String description;
     private String photoUrl;
-    private CategoryNameEnum category;
-    private CityNameEnum city;
+    private String description;
+    private Category category;
+    private City city;
     private User user;
-
-    public OfferServiceModel() {
-    }
 
     public Long getId() {
         return id;
@@ -55,14 +51,6 @@ public class OfferServiceModel {
         this.coordinates = coordinates;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getPhotoUrl() {
         return photoUrl;
     }
@@ -71,19 +59,27 @@ public class OfferServiceModel {
         this.photoUrl = photoUrl;
     }
 
-    public CategoryNameEnum getCategory() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryNameEnum category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    public CityNameEnum getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(CityNameEnum city) {
+    public void setCity(City city) {
         this.city = city;
     }
 

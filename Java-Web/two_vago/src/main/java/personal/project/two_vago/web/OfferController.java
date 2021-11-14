@@ -2,6 +2,7 @@ package personal.project.two_vago.web;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,6 +46,13 @@ public class OfferController {
                 .map(offerAddBindingModel, OfferServiceModel.class));
 
         return "redirect:/";
+    }
+
+    @GetMapping("/all")
+    public String allOffers(Model model){
+        model.addAttribute("offers",
+                offerService.getAllOffers());
+        return "offers";
     }
 
     @ModelAttribute
