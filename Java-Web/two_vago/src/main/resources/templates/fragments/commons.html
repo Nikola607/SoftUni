@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:fragment="head">
     <title>Twovago</title>
@@ -18,27 +20,24 @@
                 <div class="header_top_inner">
                     <div class="float-left">
                         <ul class="list_style">
-                            <th:block th:unless="${@currentUser.id == null}">
-                                <li>
-                                    <a href="/offers/add" class="nav-link">Add Offer</a>
+                                <li sec:authorize="hasRole('ADMIN')">
+                                    <a th:href="@{/statistics}" class="nav-link">Statistics</a>
                                 </li>
-                                <li>
-                                    <a href="/users/profile" class="nav-link">Profile</a>
+                                <li sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/offers/add}" class="nav-link">Add Offer</a>
                                 </li>
-                            </th:block>
-                            <th:block th:if="${@currentUser.id == null}">
-                                <li>
-                                    <a href="/users/register" class="nav-link">Register</a>
+                                <li sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/users/profile}" class="nav-link">Profile</a>
                                 </li>
-                                <li>
-                                    <a href="/users/login" class="nav-link">Login</a>
+                                <li sec:authorize="!isAuthenticated()">
+                                    <a th:href="@{/users/register}" class="nav-link">Register</a>
                                 </li>
-                            </th:block>
-                            <th:block th:unless="${@currentUser.id == null}">
-                                <li>
-                                    <a href="/users/logout"> Logout</a>
+                                <li sec:authorize="!isAuthenticated()">
+                                    <a th:href="@{/users/login}" class="nav-link">Login</a>
                                 </li>
-                            </th:block>
+                                <li sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/users/logout}"> Logout</a>
+                                </li>
                         </ul>
                     </div>
                     </ul>
@@ -92,7 +91,7 @@
 
                     var nav_offset_top = $('header').height() + 100;
 
-                    //* Navbar Fixed  
+                    //* Navbar Fixed
                     function navbarFixed() {
                         if ($('header').length) {
                             $(window).scroll(function () {

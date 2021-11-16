@@ -23,5 +23,6 @@ public class DBInit implements CommandLineRunner {
         userService.initializeRoles();
         categoryService.initializeRoles();
         cityService.initializeRoles();
+        userService.initializeUsers();
     }
 }
