@@ -15,7 +15,6 @@ public class OfferServiceModel {
     private BigDecimal price;
     private String coordinates;
     private String description;
-    private String photoUrl;
     private CategoryNameEnum category;
     private CityNameEnum city;
     private User user;
@@ -61,14 +60,6 @@ public class OfferServiceModel {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
     }
 
     public CategoryNameEnum getCategory() {

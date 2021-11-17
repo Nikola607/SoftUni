@@ -2,6 +2,8 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <title>Add offer - twovago</title>
+    <link rel="icon" href="/images/twovago-icon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/register_styles.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -30,14 +32,14 @@
                 <!--Form with header-->
                 <div class="form">
                     <div class="form-group">
-                        <label for="form2">Name:</label>
+                        <label for="form2">Offer Name:</label>
                         <input minlength="4" th:field="*{offerName}" th:errorclass="is-invalid" class="form-control"
                                type="offerName" placeholder="Offer Name" name="offerName"
                                aria-describedby="offerNameHelpInline" id="offerName" required>
 
                     </div>
                     <div class="form-group">
-                        <label for="form2">Price:</label>
+                        <label for="form2">Offer price:</label>
                         <input th:field="*{price}" th:errorclass="is-invalid" class="form-control" type="text"
                                placeholder="Price" name="price" aria-describedby="priceHelpInline"
                                id="price" required>
