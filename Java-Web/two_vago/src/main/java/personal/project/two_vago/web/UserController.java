@@ -62,34 +62,10 @@ public class UserController {
             return "redirect:register";
         }
 
-        userService.registerUser(modelMapper
+        userService.registerAndLoginUser(modelMapper
                 .map(userRegisterBindingModel, UserServiceModel.class));
 
         return "redirect:login";
-    }
-
-    @PostMapping("/login")
-    public String confirmLogin(@Valid UserLoginBindingModel userLoginBindingModel,
-                               BindingResult bindingResult, RedirectAttributes redirect) {
-        if (bindingResult.hasErrors()) {
-            redirect.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
-            redirect.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
-            return "redirect:login";
-        }
-
-        UserServiceModel userServiceModel = userService
-                .findByUsernameAndPassword(userLoginBindingModel.getUsername(), userLoginBindingModel.getPassword());
-
-        if (userServiceModel == null) {
-            redirect.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
-            redirect.addFlashAttribute("isFound", false);
-            return "redirect:login";
-        }
-
-        userService.login(userServiceModel.getId(), userServiceModel.getFullName(),
-                userLoginBindingModel.getRole());
-
-        return "redirect:/";
     }
 
     @ModelAttribute
