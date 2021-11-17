@@ -10,7 +10,6 @@ public class OfferAddBindingModel {
     private String offerName;
     private BigDecimal price;
     private String description;
-    private String photoUrl;
     private CategoryNameEnum category;
     private CityNameEnum city;
 
@@ -40,14 +39,6 @@ public class OfferAddBindingModel {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
     }
 
     public CategoryNameEnum getCategory() {

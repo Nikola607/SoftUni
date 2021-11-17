@@ -3,7 +3,6 @@ package personal.project.two_vago.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import personal.project.two_vago.models.entities.Offer;
-import personal.project.two_vago.models.entities.view.OfferSummaryView;
 import personal.project.two_vago.models.service.OfferServiceModel;
 import personal.project.two_vago.repository.OfferRepository;
 import personal.project.two_vago.security.CurrentUser;
@@ -11,9 +10,6 @@ import personal.project.two_vago.service.CategoryService;
 import personal.project.two_vago.service.CityService;
 import personal.project.two_vago.service.OfferService;
 import personal.project.two_vago.service.UserService;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class OfferServiceImpl implements OfferService {
@@ -44,22 +40,5 @@ public class OfferServiceImpl implements OfferService {
         offerRepository.save(offer);
 
         return modelMapper.map(offer, OfferServiceModel.class);
-    }
-
-    @Override
-    public List<OfferSummaryView> getAllOffers() {
-
-        return offerRepository
-                .findAll()
-                .stream()
-                .map(this::map)
-                .collect(Collectors.toList());
-    }
-
-    private OfferSummaryView map(Offer offerEntity){
-        OfferSummaryView summaryView = this.modelMapper
-                .map(offerEntity, OfferSummaryView.class);
-
-        return summaryView;
     }
 }
