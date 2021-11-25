@@ -106,6 +106,7 @@ public class UserServiceImpl implements UserService {
 
 
             admin.setRole(adminRole);
+
             userRepository.save(admin);
         }
     }

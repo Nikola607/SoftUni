@@ -1,20 +1,31 @@
-package personal.project.two_vago.models.binding;
+package personal.project.two_vago.models.entities.view;
 
 import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 import personal.project.two_vago.models.entities.enums.CityNameEnum;
 
-import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
-public class OfferAddBindingModel {
+public class OfferDetailsView {
+    private Long id;
+
     private String offerName;
     private BigDecimal price;
     private String picture;
     private String description;
     private CategoryNameEnum category;
     private CityNameEnum city;
+    private boolean canDelete;
+    private String sellerName;
 
-    public OfferAddBindingModel() {
+    public OfferDetailsView() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getOfferName() {
@@ -25,7 +36,6 @@ public class OfferAddBindingModel {
         this.offerName = offerName;
     }
 
-    @Positive
     public BigDecimal getPrice() {
         return price;
     }
@@ -64,5 +74,21 @@ public class OfferAddBindingModel {
 
     public void setCity(CityNameEnum city) {
         this.city = city;
+    }
+
+    public boolean isCanDelete() {
+        return canDelete;
+    }
+
+    public void setCanDelete(boolean canDelete) {
+        this.canDelete = canDelete;
+    }
+
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
     }
 }

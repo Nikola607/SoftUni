@@ -13,7 +13,7 @@ public class OfferServiceModel {
 
     private String offerName;
     private BigDecimal price;
-    private String coordinates;
+    private String picture;
     private String description;
     private CategoryNameEnum category;
     private CityNameEnum city;
@@ -47,11 +47,11 @@ public class OfferServiceModel {
     }
 
     public String getCoordinates() {
-        return coordinates;
+        return picture;
     }
 
     public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
+        this.picture = coordinates;
     }
 
     public String getDescription() {

@@ -12,7 +12,7 @@ public class Offer extends BaseEntity {
 
     private String offerName;
     private BigDecimal price;
-    private String coordinates;
+    private String picture;
     private String description;
     private Category category;
     private City city;
@@ -40,12 +40,12 @@ public class Offer extends BaseEntity {
         this.price = price;
     }
 
-    public String getCoordinates() {
-        return coordinates;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
+    public void setPicture(String coordinates) {
+        this.picture = coordinates;
     }
 
     @Column(nullable = false, columnDefinition = "Text")

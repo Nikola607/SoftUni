@@ -1,12 +1,13 @@
-package personal.project.two_vago.models.binding;
+package personal.project.two_vago.models.entities.view;
 
 import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 import personal.project.two_vago.models.entities.enums.CityNameEnum;
 
-import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
-public class OfferAddBindingModel {
+public class OfferSummaryView {
+    private Long id;
+
     private String offerName;
     private BigDecimal price;
     private String picture;
@@ -14,7 +15,15 @@ public class OfferAddBindingModel {
     private CategoryNameEnum category;
     private CityNameEnum city;
 
-    public OfferAddBindingModel() {
+    public OfferSummaryView() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getOfferName() {
@@ -25,7 +34,6 @@ public class OfferAddBindingModel {
         this.offerName = offerName;
     }
 
-    @Positive
     public BigDecimal getPrice() {
         return price;
     }
