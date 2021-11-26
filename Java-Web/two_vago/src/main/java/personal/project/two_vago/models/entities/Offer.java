@@ -40,12 +40,13 @@ public class Offer extends BaseEntity {
         this.price = price;
     }
 
+    @Column(nullable = false)
     public String getPicture() {
         return picture;
     }
 
-    public void setPicture(String coordinates) {
-        this.picture = coordinates;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Column(nullable = false, columnDefinition = "Text")

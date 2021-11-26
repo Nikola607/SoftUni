@@ -1,7 +1,5 @@
 package personal.project.two_vago.models.service;
 
-import personal.project.two_vago.models.entities.Category;
-import personal.project.two_vago.models.entities.City;
 import personal.project.two_vago.models.entities.User;
 import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 import personal.project.two_vago.models.entities.enums.CityNameEnum;
@@ -84,5 +82,13 @@ public class OfferServiceModel {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
