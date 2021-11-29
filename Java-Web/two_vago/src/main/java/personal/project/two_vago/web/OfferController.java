@@ -53,7 +53,7 @@ public class OfferController {
         return "offers";
     }
 
-    @GetMapping("/offers/{id}/details")
+    @GetMapping("/{id}/details")
     public String showOffer(
             @PathVariable Long id, Model model,
             Principal principal) {

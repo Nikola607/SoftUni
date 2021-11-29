@@ -22,15 +22,14 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
             <div class="item-slide">
                 <div class="box-img">
-                    <img th:src="*{getPicture()}"
-                         alt="dasdas"/>
+                    <img th:src="*{getPicture()}" alt="Car image"/>
                     <div class="text-wrap">
                        <span class="deal-data">
                         <div class="desc">
+                            <span th:text="*{category}"></span>
+                        <span th:text="*{offerName}"></span>
                             <h4 th:text="*{city}"></h4>
-                            <h4 th:text="*{category}"></h4>
-                        <span>Starting from</span>
-                        <h3 th:text="*{price}"></h3>
+                        <h4>Price: €<span th:text="*{price}"></span></h4>
                     </div>
                     <div class="book-now-c" style="visibility: hidden;">
                         <a href="#">Book Now</a>

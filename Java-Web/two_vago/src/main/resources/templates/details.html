@@ -34,44 +34,19 @@
 
                     <div class="preview-pic tab-content">
                         <div class="tab-pane active" id="pic-1"><img class="pop"
-                                                                     src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129494.jpg?k=05facb24d6a269f7b96e6a069ded20d75d3e94059f85da052df314a640a110e0&o=&hp=1"/>
+                                                                     th:src="*{getPicture()}"/>
                         </div>
-                        <div class="tab-pane" id="pic-2"><img class="pop"
-                                                              src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129982.jpg?k=980853ddf6a75f0394453de87fecc938ac5bc34c39c7aac2b92bbb3a05a923ce&o=&hp=1"/>
-                        </div>
-                        <div class="tab-pane" id="pic-3"><img class="pop"
-                                                              src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129947.jpg?k=91e1866cd6636f19e308b9f4c8a41229634b0b3474324ab50448097904373850&o=&hp=1"/>
-                        </div>
-                        <div class="tab-pane" id="pic-4"><img class="pop"
-                                                              src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129984.jpg?k=09218455bd6ec9f82d73a1eabd7f9dd2b85791c9c667b976b038ceb3e290316d&o=&hp=1"/>
-                        </div>
-                        <div class="tab-pane" id="pic-5"><img class="pop"
-                                                              src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129501.jpg?k=c8e0da9723fdb37fdd31a76ae710412b57bae53a64acf12cd985f440c41478a4&o=&hp=1"/>
-                        </div>
-
                     </div>
 
                     <ul class="preview-thumbnail nav nav-tabs">
                         <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
-                                src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129494.jpg?k=05facb24d6a269f7b96e6a069ded20d75d3e94059f85da052df314a640a110e0&o=&hp=1"/></a>
-                        </li>
-                        <li><a data-target="#pic-2" data-toggle="tab"><img
-                                src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129982.jpg?k=980853ddf6a75f0394453de87fecc938ac5bc34c39c7aac2b92bbb3a05a923ce&o=&hp=1"/></a>
-                        </li>
-                        <li><a data-target="#pic-3" data-toggle="tab"><img
-                                src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129947.jpg?k=91e1866cd6636f19e308b9f4c8a41229634b0b3474324ab50448097904373850&o=&hp=1"/></a>
-                        </li>
-                        <li><a data-target="#pic-4" data-toggle="tab"><img
-                                src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129984.jpg?k=09218455bd6ec9f82d73a1eabd7f9dd2b85791c9c667b976b038ceb3e290316d&o=&hp=1"/></a>
-                        </li>
-                        <li><a data-target="#pic-5" data-toggle="tab"><img
-                                src="https://t-cf.bstatic.com/xdata/images/hotel/max1280x900/164129501.jpg?k=c8e0da9723fdb37fdd31a76ae710412b57bae53a64acf12cd985f440c41478a4&o=&hp=1"/></a>
+                                th:src="*{getPicture()}"/></a>
                         </li>
                     </ul>
 
                 </div>
                 <div class="details col-md-6 d-none">
-                    <h3 class="product-title">Villa EM</h3>
+                    <h3 th:text="*{offerName}" class="product-title"></h3>
                     <div class="rating">
                         <div class="stars">
                             <span class="fa fa-star checked"></span>
@@ -80,25 +55,13 @@
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                         </div>
-                        <span class="review-no">Lozenetz, Bulgaria</span>
+                        <span th:text="*{city}" class="review-no"></span>
+                        <span th:text="*{category}" class="review-no"></span>
                     </div>
-                    <p class="product-description">Villa EM features a restaurant, seasonal outdoor swimming pool, a
-                        shared lounge and garden in Lozenets. Among the facilities at this property are a kids' club
-                        and luggage storage space, along with free WiFi throughout the property. The hotel has
-                        family rooms.
-
-                        At the hotel every room includes air conditioning, a desk, a balcony with pool view, a
-                        private bathroom, a flat-screen TV, bed linen and towels. The units feature a safety deposit
-                        box.
-
-                        Guests at Villa EM can enjoy a continental or a buffet breakfast.
-
-                        The accommodations offers a terrace. You can play table tennis, mini-golf and tennis at
-                        Villa EM, and the area is popular for hiking and snorkeling.
-
-                        Lozenets Oasis Beach is 1.1 mi from the hotel, while Lozenets Bus Station is 0.7 mi away.
-                        The nearest airport is Burgas Airport, 29 mi from Villa EM.</p>
-                    <h4 class="price">current price: <span>$180 / night</span></h4>
+                    <p th:text="*{description}" class="product-description"></p>
+                    <h4 class="price">current price:<span>€</span>
+                        <span th:text="*{price}"></span>
+                        <span> / night</span></h4>
                 </div>
                 <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong>
                     </p> -->

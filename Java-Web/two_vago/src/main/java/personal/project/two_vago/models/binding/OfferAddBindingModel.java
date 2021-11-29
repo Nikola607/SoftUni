@@ -3,6 +3,7 @@ package personal.project.two_vago.models.binding;
 import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 import personal.project.two_vago.models.entities.enums.CityNameEnum;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
@@ -34,6 +35,7 @@ public class OfferAddBindingModel {
         this.price = price;
     }
 
+    @NotNull
     public String getPicture() {
         return picture;
     }

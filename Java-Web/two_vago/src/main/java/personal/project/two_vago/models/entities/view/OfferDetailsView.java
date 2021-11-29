@@ -1,9 +1,11 @@
 package personal.project.two_vago.models.entities.view;
 
+import personal.project.two_vago.models.entities.Review;
 import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 import personal.project.two_vago.models.entities.enums.CityNameEnum;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 public class OfferDetailsView {
     private Long id;
@@ -12,6 +14,7 @@ public class OfferDetailsView {
     private BigDecimal price;
     private String picture;
     private String description;
+    private Set<Review> review;
     private CategoryNameEnum category;
     private CityNameEnum city;
     private boolean canDelete;
@@ -26,6 +29,14 @@ public class OfferDetailsView {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Set<Review> getReview() {
+        return review;
+    }
+
+    public void setReview(Set<Review> review) {
+        this.review = review;
     }
 
     public String getOfferName() {

@@ -7,6 +7,8 @@ import personal.project.two_vago.repository.CityRepository;
 import personal.project.two_vago.service.CityService;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class CityServiceImpl implements CityService {

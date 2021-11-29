@@ -15,4 +15,6 @@ public interface OfferService {
     List<OfferSummaryView> getAllOffers();
 
     OfferDetailsView findById(Long id, String name);
+
+    void initializeOffers();
 }

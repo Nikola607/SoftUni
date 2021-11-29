@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import personal.project.two_vago.service.CategoryService;
 import personal.project.two_vago.service.CityService;
+import personal.project.two_vago.service.OfferService;
 import personal.project.two_vago.service.UserService;
 
 @Component
@@ -11,11 +12,13 @@ public class DBInit implements CommandLineRunner {
     private final UserService userService;
     private final CategoryService categoryService;
     private final CityService cityService;
+    private final OfferService offerService;
 
-    public DBInit(UserService userService, CategoryService categoryService, CityService cityService) {
+    public DBInit(UserService userService, CategoryService categoryService, CityService cityService, OfferService offerService) {
         this.userService = userService;
         this.categoryService = categoryService;
         this.cityService = cityService;
+        this.offerService = offerService;
     }
 
     @Override
@@ -24,5 +27,6 @@ public class DBInit implements CommandLineRunner {
         categoryService.initializeRoles();
         cityService.initializeRoles();
         userService.initializeUsers();
+        offerService.initializeOffers();
     }
 }
