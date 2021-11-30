@@ -22,29 +22,34 @@
     </div>
 
     <section th:each="o : ${offers}" th:object="${o}" th:if="${oStat.index < 3}" class="new-deal">
-        <div class="container">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block new-deal">
-                <div class="item-slide">
-                    <div class="box-img">
-                        <img th:src="*{getPicture()}" alt="Car image"/>
-                        <div class="text-wrap">
-                       <span class="deal-data">
-                        <div class="desc">
-                            <span th:text="*{category}"></span>
-                        <span th:text="*{offerName}"></span>
-                            <h4 th:text="*{city}"></h4>
-                        <h4>Price: €<span th:text="*{price}"></span></h4>
-                    </div>
-                    <div class="book-now-c" style="visibility: hidden;">
-                        <a href="#">Book Now</a>
-                    </div>
+        <div class="box">
+            <div class="new-deal">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="item-slide">
+                        <div class="box-img">
+                            <img th:src="*{getPicture()}" alt="Car image" />
+                            <div class="text-wrap">
+                                <span class="deal-data">
+                                    <div class="desc">
+                                        <h4 th:text="*{category}">
+                                </span>
+                                <br>
+                                <div class="offername">
+                                    <span th:text="*{offerName}"></span>
+                                </div>
+                                <span th:text="*{city}"></span>
+                                <h4>Price: €<span th:text="*{price}"></span></h4>
+                            </div>
+                            <div class="book-now-c" style="visibility: hidden;">
+                                <a href="#">Book Now</a>
+                            </div>
                         </div>
                     </div>
                     <div class="slide-hover">
                         <div class="text-wrap">
                             <p th:text="*{description}"></p>
                             <h4 class="hidden">Velingrad, Bulgaria <span class="deal-data"><span
-                                    class="glyphicon glyphicon-calendar"></span>
+                                        class="glyphicon glyphicon-calendar"></span>
                                     Sun, Jan 29 - Tue, Jan 31</span></h4>
                             <div class="book-now-c">
                                 <a th:href="@{/offers/{id}/details(id=*{id})}">Details</a>

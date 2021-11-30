@@ -9,13 +9,34 @@
 	animation: FadeIn 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 
+
+
+.box {
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.container-text {
+    color: white;
+    font-weight: 500;
+    padding-top: 50px;
+    width: auto;
+    padding-left: 180px;
+    padding-right: 180px;
+    overflow: hidden;
+}
+
 .new-deal {
-	width: 100%;
-	float: left;
+	padding-left: 10%;
+	padding-right: 10%;
+	width: auto;
 	animation: FadeIn 1s cubic-bezier(0.65, 0.05, 0.36, 1);
 	animation-fill-mode: both;
 	text-align: left;
-	align-content: center;
+}
+
+.offername {
+	color: aqua;
 }
 
 .new-deal .item-slide {
