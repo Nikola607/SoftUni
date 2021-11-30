@@ -30,13 +30,13 @@ public class TwoVagoUserServiceImpl implements UserDetailsService {
 
     private static UserDetails mapByUserDetails(User user){
 
-        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getRoleName().toString());
+        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + user.getRole().getRoleName());
 
         // User is the spring implementation of UserDetails interface.
         return new TwoVagoUser(
                 user.getUsername(),
                 user.getPassword(),
-                Collections.singleton(authority)
+                authority
         );
     }
 }

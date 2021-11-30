@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <link rel="stylesheet" href="/css/index_styles.css">
@@ -11,8 +13,9 @@
 </head>
 
 <body>
+<header th:replace="fragments/commons.html::nav"></header>
 
-<div>
+<div class="hot-offers">
     <h1 class="text-center text-white mt-5">Welcome to Stats!</h1>
     <h3 class="text-center text-white mt-5">Total requests <th:block th:text="${stats.getTotalRequests()}"></th:block></h3>
     <h3 class="text-center text-white mt-5">Anonymous requests <th:block th:text="${stats.getAnonRequests()}"></th:block></h3>
