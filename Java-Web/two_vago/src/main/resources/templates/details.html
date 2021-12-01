@@ -62,6 +62,14 @@
                     <h4 class="price">current price:<span>€</span>
                         <span th:text="*{price}"></span>
                         <span> / night</span></h4>
+                    <th:block th:if="*{canUpdate}">
+                        <a class="btn btn-link" th:href="@{/offers/{id}/edit(id=*{id})}">Update</a>
+                    </th:block>
+                    <th:block th:if="*{canDelete}">
+                        <form th:action="@{/offers/{id}(id=*{id})}" th:method="delete">
+                            <input type="submit" class="btn btn-link" value="Delete"/>
+                        </form>
+                    </th:block>
                 </div>
                 <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong>
                     </p> -->

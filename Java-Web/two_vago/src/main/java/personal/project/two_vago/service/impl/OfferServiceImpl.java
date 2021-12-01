@@ -2,9 +2,13 @@ package personal.project.two_vago.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
+import personal.project.two_vago.models.binding.OfferAddBindingModel;
+import personal.project.two_vago.models.entities.Category;
 import personal.project.two_vago.models.entities.Offer;
+import personal.project.two_vago.models.entities.User;
 import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 import personal.project.two_vago.models.entities.enums.CityNameEnum;
+import personal.project.two_vago.models.entities.enums.RoleNameEnum;
 import personal.project.two_vago.models.entities.view.OfferDetailsView;
 import personal.project.two_vago.models.entities.view.OfferSummaryView;
 import personal.project.two_vago.models.service.OfferServiceModel;
@@ -16,9 +20,11 @@ import personal.project.two_vago.service.CategoryService;
 import personal.project.two_vago.service.CityService;
 import personal.project.two_vago.service.OfferService;
 import personal.project.two_vago.service.UserService;
+import personal.project.two_vago.web.exceptions.ObjectNotFoundException;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -44,17 +50,38 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public OfferServiceModel addOffer(OfferServiceModel offerServiceModel) {
-        Offer offer = modelMapper.map(offerServiceModel, Offer.class);
+    public OfferServiceModel addOffer(OfferAddBindingModel offerAddBindingModel, String ownerId) {
+        User userEntity = userRepository.findByUsername(ownerId).orElseThrow();
+        OfferServiceModel offerAddServiceModel = modelMapper.map(offerAddBindingModel,
+                OfferServiceModel.class);
+        Offer newOffer = modelMapper.map(offerAddServiceModel, Offer.class);
+        newOffer.setUser(userEntity);
+        newOffer.setCategory(categoryService.findByCategoryName(offerAddServiceModel.getCategory()));
+        newOffer.setCity(cityService.findByCityName(offerAddServiceModel.getCity()));
 
-        offer.setCategory(categoryService.findByCategoryName(offerServiceModel.getCategory()));
-        offer.setCity(cityService.findByCityName(offerServiceModel.getCity()));
-//        TODO
-//        offer.setUser(userService.findById(currentUser.getId()));
+        Offer savedOffer = offerRepository.save(newOffer);
+        return modelMapper.map(savedOffer, OfferServiceModel.class);
+    }
 
-        offerRepository.save(offer);
+    @Override
+    public void deleteOffer(Long id) {
+        offerRepository.deleteById(id);
+    }
 
-        return modelMapper.map(offer, OfferServiceModel.class);
+    @Override
+    public void updateOffer(OfferServiceModel offerModel) {
+        Offer offerEntity =
+                offerRepository.findById(offerModel.getId()).orElseThrow(() ->
+                        new ObjectNotFoundException("Offer with id " + offerModel.getId() + " not found!"));
+
+        offerEntity.setPrice(offerModel.getPrice());
+        offerEntity.setDescription(offerModel.getDescription());
+        offerEntity.setCategory(categoryService.findByCategoryName(offerModel.getCategory()));
+        offerEntity.setCity(cityService.findByCityName(offerModel.getCity()));
+        offerEntity.setOfferName(offerModel.getOfferName());
+        offerEntity.setPicture(offerEntity.getPicture());
+
+        offerRepository.save(offerEntity);
     }
 
     @Override
@@ -76,8 +103,47 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    public boolean isOwner(String userName, Long id) {
+
+        Optional<Offer> offerOpt = offerRepository.
+                findById(id);
+        Optional<User> caller = userRepository.
+                findByUsername(userName);
+
+        if (offerOpt.isEmpty() || caller.isEmpty()) {
+            return false;
+        } else {
+            Offer offerEntity = offerOpt.get();
+
+            return isAdmin(caller.get()) ||
+                    offerEntity.getUser().getUsername().equals(userName);
+        }
+    }
+
+    @Override
+    public boolean isOwnerUpdate(String userName, Long id) {
+        Optional<Offer> offerOpt = offerRepository.
+                findById(id);
+        Optional<User> caller = userRepository.
+                findByUsername(userName);
+
+        if (offerOpt.isEmpty() || caller.isEmpty()) {
+            return false;
+        } else {
+            Offer offerEntity = offerOpt.get();
+
+            return offerEntity.getUser().getUsername().equals(userName);
+        }
+    }
+
+    private boolean isAdmin(User user) {
+        return user.getRole()
+                .getRoleName().equals(RoleNameEnum.ADMIN);
+    }
+
+    @Override
     public void initializeOffers() {
-        if (offerRepository.count() == 0){
+        if (offerRepository.count() == 0) {
             Offer offer1 = new Offer();
             offer1.setOfferName("Grand Hotel Bansko");
             offer1.setDescription("Grand Hotel Bansko offers a panoramic view to its guests of the whole town and the\n" +
@@ -113,13 +179,13 @@ public class OfferServiceImpl implements OfferService {
 
     private OfferDetailsView mapDetailsView(String currentUser, Offer offer) {
         OfferDetailsView offerDetailsView = this.modelMapper.map(offer, OfferDetailsView.class);
-        //TODO
-        //offerDetailsView.setCanDelete(isOwner(currentUser, offer.getId()));
+        offerDetailsView.setCanDelete(isOwner(currentUser, offer.getId()));
+        offerDetailsView.setCanUpdate(isOwnerUpdate(currentUser, offer.getId()));
         offerDetailsView.setCategory(offer.getCategory().getCategoryName());
         offerDetailsView.setCity(offer.getCity().getName());
-//        offerDetailsView.setSellerName(
-//                offer.getUser().getFullName()
-//        );
+        offerDetailsView.setSellerName(
+                offer.getUser().getFullName()
+        );
         return offerDetailsView;
     }
 

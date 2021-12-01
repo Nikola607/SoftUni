@@ -1,27 +1,21 @@
-package personal.project.two_vago.models.entities.view;
+package personal.project.two_vago.models.binding;
 
-import personal.project.two_vago.models.entities.Review;
 import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 import personal.project.two_vago.models.entities.enums.CityNameEnum;
 
 import java.math.BigDecimal;
-import java.util.Set;
 
-public class OfferDetailsView {
+public class OfferUpdateBindingModel {
     private Long id;
 
     private String offerName;
     private BigDecimal price;
     private String picture;
     private String description;
-    private Set<Review> review;
     private CategoryNameEnum category;
     private CityNameEnum city;
-    private boolean canDelete;
-    private boolean canUpdate;
-    private String sellerName;
 
-    public OfferDetailsView() {
+    public OfferUpdateBindingModel() {
     }
 
     public Long getId() {
@@ -30,14 +24,6 @@ public class OfferDetailsView {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Set<Review> getReview() {
-        return review;
-    }
-
-    public void setReview(Set<Review> review) {
-        this.review = review;
     }
 
     public String getOfferName() {
@@ -86,29 +72,5 @@ public class OfferDetailsView {
 
     public void setCity(CityNameEnum city) {
         this.city = city;
-    }
-
-    public boolean isCanDelete() {
-        return canDelete;
-    }
-
-    public void setCanDelete(boolean canDelete) {
-        this.canDelete = canDelete;
-    }
-
-    public boolean isCanUpdate() {
-        return canUpdate;
-    }
-
-    public void setCanUpdate(boolean canUpdate) {
-        this.canUpdate = canUpdate;
-    }
-
-    public String getSellerName() {
-        return sellerName;
-    }
-
-    public void setSellerName(String sellerName) {
-        this.sellerName = sellerName;
     }
 }

@@ -10,11 +10,20 @@ import java.util.List;
 
 @Service
 public interface OfferService {
-    OfferServiceModel addOffer(OfferServiceModel offerServiceModel);
 
     List<OfferSummaryView> getAllOffers();
 
     OfferDetailsView findById(Long id, String name);
 
+    boolean isOwner(String userName, Long id);
+
+    boolean isOwnerUpdate(String userName, Long id);
+
     void initializeOffers();
+
+    OfferServiceModel addOffer(OfferAddBindingModel offerAddBindingModel, String ownerId);
+
+    void deleteOffer(Long id);
+
+    void updateOffer(OfferServiceModel offerModel);
 }
