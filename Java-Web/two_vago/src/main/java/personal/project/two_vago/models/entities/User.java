@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 public class User extends BaseEntity {
 
     private String username;
+    private String profilePic;
     private String password;
     private String fullName;
     private Integer age;
@@ -24,6 +25,14 @@ public class User extends BaseEntity {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
     @Column(nullable = false)

@@ -24,6 +24,10 @@
     overflow: hidden;
 }
 
+.container-text text{
+	margin-top: 400px;
+}
+
 .new-deal {
 	padding-left: 10%;
 	padding-right: 10%;

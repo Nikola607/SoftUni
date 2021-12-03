@@ -60,23 +60,13 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                             aria-haspopup="true" aria-expanded="false">Какво търся?</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Хотели</a></li>
-                            <li><a href="#">Вили</a></li>
+                            <li><a th:href="@{/offers/{category}/all}">Хотели</a></li>
+                            <li><a th:href="@{/offers/{category}/all}">Вили</a></li>
 
                         </ul>
                     </li>
                     <li class="nav-item"><a href="/offers/all" class="nav-link">Оферти</a></li>
                     <!-- <li class="nav-item"><a href="#" class="nav-link">What's New</a></li> -->
-
-                    <li class="nav-item submenu dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                            aria-haspopup="true" aria-expanded="false">Градове</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/">София</a></li>
-                            <li><a href="/">Варна</a></li>
-                            <li><a href="/">Бургас</a></li>
-                        </ul>
-                    </li>
 
                     <!-- <li class="nav-item"><a href="#" class="nav-link">Enquiry</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Conatct Us</a></li> -->

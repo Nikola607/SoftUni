@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import personal.project.two_vago.service.CityService;
 import personal.project.two_vago.service.OfferService;
 
 import java.security.Principal;
@@ -12,15 +11,13 @@ import java.security.Principal;
 @Controller
 public class HomeController {
     private final OfferService offerService;
-    private final CityService cityService;
 
-    public HomeController(OfferService offerService, CityService cityService) {
+    public HomeController(OfferService offerService) {
         this.offerService = offerService;
-        this.cityService = cityService;
     }
 
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model) {
         model.addAttribute("offers",
                 offerService.getAllOffers());
         return "index";

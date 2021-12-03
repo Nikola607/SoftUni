@@ -2,6 +2,7 @@ package personal.project.two_vago.service;
 
 import org.springframework.stereotype.Service;
 import personal.project.two_vago.models.binding.OfferAddBindingModel;
+import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 import personal.project.two_vago.models.entities.view.OfferDetailsView;
 import personal.project.two_vago.models.entities.view.OfferSummaryView;
 import personal.project.two_vago.models.service.OfferServiceModel;
@@ -26,4 +27,6 @@ public interface OfferService {
     void deleteOffer(Long id);
 
     void updateOffer(OfferServiceModel offerModel);
+
+    List<OfferSummaryView> getAllOffersByCategory(CategoryNameEnum category);
 }

@@ -2,14 +2,13 @@ package personal.project.two_vago.web;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import personal.project.two_vago.models.binding.UserLoginBindingModel;
 import personal.project.two_vago.models.binding.UserRegisterBindingModel;
+import personal.project.two_vago.models.entities.view.UserViewModel;
 import personal.project.two_vago.models.service.UserServiceModel;
 import personal.project.two_vago.service.UserService;
 
@@ -45,7 +44,8 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    private String profile() {
+    private String profile(Model model){
+
         return "profile";
     }
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import personal.project.two_vago.models.binding.OfferAddBindingModel;
 import personal.project.two_vago.models.binding.OfferUpdateBindingModel;
+import personal.project.two_vago.models.entities.Category;
 import personal.project.two_vago.models.entities.enums.CategoryNameEnum;
 import personal.project.two_vago.models.entities.enums.CityNameEnum;
 import personal.project.two_vago.models.entities.view.OfferDetailsView;
@@ -44,7 +45,7 @@ public class OfferController {
         if (bindingResult.hasErrors()) {
             redirect.addFlashAttribute("offerAddBindingModel", offerAddBindingModel);
             redirect.addFlashAttribute("org.springframework.validation.BindingResult.offerAddBindingModel", bindingResult);
-            redirect.addFlashAttribute("brandsModels", offerService.getAllOffers());
+            redirect.addFlashAttribute("offers", offerService.getAllOffers());
             return "redirect:/add";
         }
 
@@ -70,7 +71,7 @@ public class OfferController {
     }
 
     @PreAuthorize("isOwnerUpdate(#id)")
-    @PatchMapping("/{id}/edit")
+    @PostMapping("/{id}/edit")
     public String editOffer(
             @PathVariable Long id,
             @Valid OfferUpdateBindingModel offerModel,
@@ -95,18 +96,11 @@ public class OfferController {
     }
 
     @PreAuthorize("isOwner(#id)")
-    @DeleteMapping("/{id}")
-    public String deleteOffer(@PathVariable Long id,
-                              Principal principal) {
-
-        // Most naive approach - check explicitly if the current user is an
-        //owner and throw exception if this is not the case.
-//        if (!offerService.isOwner(principal.getName(), id)) {
-//            throw new RuntimeException();
-//        }
+    @PostMapping("/{id}")
+    public String deleteOffer(@PathVariable Long id){
         offerService.deleteOffer(id);
 
-        return "redirect:all";
+        return "redirect:/offers/all";
     }
 
     @GetMapping("/all")
@@ -114,6 +108,14 @@ public class OfferController {
         model.addAttribute("offers",
                 offerService.getAllOffers());
         return "offers";
+    }
+
+    @GetMapping("/{category}/all")
+    public String allOffersByCategory(@PathVariable Category category ,Model model){
+        model.addAttribute("offersByCategory",
+                offerService.getAllOffersByCategory(category.getCategoryName()));
+
+        return "offers-category";
     }
 
     @GetMapping("/{id}/details")

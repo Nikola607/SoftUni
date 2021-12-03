@@ -72,7 +72,7 @@ public class OfferServiceImpl implements OfferService {
     public void updateOffer(OfferServiceModel offerModel) {
         Offer offerEntity =
                 offerRepository.findById(offerModel.getId()).orElseThrow(() ->
-                        new ObjectNotFoundException("Offer with id " + offerModel.getId() + " not found!"));
+                        new ObjectNotFoundException(offerModel.getId()));
 
         offerEntity.setPrice(offerModel.getPrice());
         offerEntity.setDescription(offerModel.getDescription());
@@ -82,6 +82,16 @@ public class OfferServiceImpl implements OfferService {
         offerEntity.setPicture(offerEntity.getPicture());
 
         offerRepository.save(offerEntity);
+    }
+
+    @Override
+    public List<OfferSummaryView> getAllOffersByCategory(CategoryNameEnum category) {
+        Category newCategory = modelMapper.map(category, Category.class);
+
+        return offerRepository.findAllByCategory(newCategory).
+                stream().
+                map(this::map).
+                collect(Collectors.toList());
     }
 
     @Override
