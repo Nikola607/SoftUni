@@ -19,9 +19,20 @@
 <div th:object="${userViewModel}" id="wrapper">
     <img th:src="*{getProfilePic()}" alt="Profile picture" id="profile">
     <h1 th:text="*{fullName}" id="name"></h1>
-    <h4 th:text="*{role}"> Role:</h4>
-    <h4 th:text="*{email}"> Email:</h4>
+    <h4 class="age">Age:
+        <span th:text="*{age}"></span>
+    </h4>
+    <h4 class="age">Role:
+        <span th:text="*{role}"></span>
+    </h4>
+    <h4 class="age">Email:
+        <span th:text="*{email}"></span>
+    </h4>
 </div>
+<h4 th:object="${userViewModel}" class="offersBy">All offers by
+    <span th:text="*{fullName}"></span><span>:</span>
+</h4>
+<div class="oferti">
 <section th:each="o : ${userOffers}" th:object="${o}" class="new-deal">
     <div class="container">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
@@ -56,7 +67,7 @@
         </div>
     </div>
 </section>
-
+</div>
 </body>
 
 </html>
