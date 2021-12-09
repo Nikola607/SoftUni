@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>twovago</title>
     <link rel="icon" href="/images/twovago-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/all-offers.css">
     <link rel="stylesheet" href="/css/navigation_styles.css">
-    <link rel="stylesheet" href="/css/index_styles.css">
-    <link rel="stylesheet" href="/css/profile_style.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,14 +13,11 @@
 </head>
 
 <body>
-<header th:replace="fragments/commons.html::nav"></header>
-<div th:object="${userViewModel}" id="wrapper">
-    <img th:src="*{getProfilePic()}" alt="Profile picture" id="profile">
-    <h1 th:text="*{fullName}" id="name"></h1>
-    <h4 th:text="*{role}"> Role:</h4>
-    <h4 th:text="*{email}"> Email:</h4>
+<div class="nav-wrapper" style="height:70px;">
+    <header th:replace="fragments/commons.html::nav"></header>
 </div>
-<section th:each="o : ${userOffers}" th:object="${o}" class="new-deal">
+
+<section th:each="o : ${offersByCategoryVilla}" th:object="${o}" class="new-deal">
     <div class="container">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
             <div class="item-slide">

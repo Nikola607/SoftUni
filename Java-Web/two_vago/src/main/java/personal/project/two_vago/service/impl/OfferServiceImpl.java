@@ -85,13 +85,23 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public List<OfferSummaryView> getAllOffersByCategory(CategoryNameEnum category) {
-        Category newCategory = modelMapper.map(category, Category.class);
+    public List<OfferSummaryView> getOffersByUser(String name) {
+        User user = userRepository.findByUsername(name).orElse(null);
 
-        return offerRepository.findAllByCategory(newCategory).
-                stream().
-                map(this::map).
-                collect(Collectors.toList());
+        return offerRepository.findAllByUser(user)
+                .stream()
+                .map(this::map)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<OfferSummaryView> getAllOffersByCategory(CategoryNameEnum name) {
+        Category category = categoryRepository.findAllByCategoryName(name);
+
+        return offerRepository.findAllByCategory(category)
+                .stream()
+                .map(this::map)
+                .collect(Collectors.toList());
     }
 
     @Override
