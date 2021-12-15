@@ -148,6 +148,13 @@ public class UserServiceImpl implements UserService {
         return modelMapper.map(user, UserViewModel.class);
     }
 
+    @Override
+    public void setLoggedIn(String name) {
+        User user = userRepository.findByUsername(name).orElse(null);
+
+        user.setWasLoggedInToday(true);
+    }
+
 //    @Override
 //    public List<UserViewModel> getOffersByUser(String name) {
 //        User user = userRepository.findByUsername(name).orElse(null);

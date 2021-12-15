@@ -23,4 +23,6 @@ public interface UserService {
     UserViewModel getViewModelByUsername(String name);
 
     UserViewModel changeProfilePic(String name);
+
+    void setLoggedIn(String name);
 }

@@ -18,6 +18,7 @@ public class User extends BaseEntity {
     private Role role;
     private List<Offer> offers;
     private String number;
+    private boolean wasLoggedInToday = false;
 
     public User() {
     }
@@ -99,5 +100,14 @@ public class User extends BaseEntity {
 
     public void setOffers(List<Offer> offers) {
         this.offers = offers;
+    }
+
+    @Column
+    public boolean isWasLoggedInToday() {
+        return wasLoggedInToday;
+    }
+
+    public void setWasLoggedInToday(boolean wasLoggedInToday) {
+        this.wasLoggedInToday = wasLoggedInToday;
     }
 }
