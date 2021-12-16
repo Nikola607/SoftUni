@@ -24,5 +24,9 @@ public interface UserService {
 
     UserViewModel changeProfilePic(String name);
 
-    void setLoggedIn(String name);
+    void setLoggedIn();
+
+    void loginPointSystem(String name);
+
+    void initializeRanks();
 }

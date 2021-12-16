@@ -19,6 +19,8 @@ public class User extends BaseEntity {
     private List<Offer> offers;
     private String number;
     private boolean wasLoggedInToday = false;
+    private int loginDays;
+    private Rank rank;
 
     public User() {
     }
@@ -109,5 +111,22 @@ public class User extends BaseEntity {
 
     public void setWasLoggedInToday(boolean wasLoggedInToday) {
         this.wasLoggedInToday = wasLoggedInToday;
+    }
+
+    public int getLoginDays() {
+        return loginDays;
+    }
+
+    public void setLoginDays(int loginDays) {
+        this.loginDays = loginDays;
+    }
+
+    @ManyToOne
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
     }
 }

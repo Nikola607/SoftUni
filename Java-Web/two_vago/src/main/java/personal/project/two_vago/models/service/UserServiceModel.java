@@ -1,5 +1,6 @@
 package personal.project.two_vago.models.service;
 
+import personal.project.two_vago.models.entities.Rank;
 import personal.project.two_vago.models.entities.Role;
 
 public class UserServiceModel {
@@ -13,6 +14,8 @@ public class UserServiceModel {
     private String email;
     private Role role;
     private boolean wasLoggedInToday = false;
+    private int loginDays;
+    private Rank rank;
 
     public UserServiceModel() {
     }
@@ -87,5 +90,21 @@ public class UserServiceModel {
 
     public void setWasLoggedInToday(boolean wasLoggedInToday) {
         this.wasLoggedInToday = wasLoggedInToday;
+    }
+
+    public int getLoginDays() {
+        return loginDays;
+    }
+
+    public void setLoginDays(int loginDays) {
+        this.loginDays = loginDays;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
     }
 }

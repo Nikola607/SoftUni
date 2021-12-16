@@ -5,19 +5,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import personal.project.two_vago.service.OfferService;
+import personal.project.two_vago.service.UserService;
 
 import java.security.Principal;
 
 @Controller
 public class HomeController {
     private final OfferService offerService;
+    private final UserService userService;
 
-    public HomeController(OfferService offerService) {
+    public HomeController(OfferService offerService, UserService userService) {
         this.offerService = offerService;
+        this.userService = userService;
     }
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Principal principal, Model model) {
         model.addAttribute("offers",
                 offerService.getAllOffers());
         return "index";
